@@ -18,18 +18,14 @@
 }
 
 
-
 .track {
-  padding: 0px;
-  margin-top: 20px;
-  margin-left: 12%;
   height: 200px;
   width: 200px;
 }
 
 .signupIMG {
-  padding: 0px;
-  margin-top: 0px;
+  /* padding: 0px;
+  margin-top: 0px; */
   height: 90px;
   width: 290px;
 }
@@ -40,4 +36,8 @@
   margin-bottom: 3px;
   height: 75px;
   width: 290px;
+}
+
+.userBox{
+    padding:2%;
 }
