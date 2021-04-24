@@ -1,10 +1,9 @@
 import React from "react";
-import "./style.css";
+import "./LoginSignup.css";
 
 function LoginSignup() {
     return (
-        
-        <div className="container">
+        // <div className="container mt-3">
             <div className="row">
                 <div className="jumbotron2">
                         <div className="col-sm-4">
@@ -13,11 +12,11 @@ function LoginSignup() {
                             <form>
                                 <div className="form-group">
                                     <label for="inputEmail">Email</label>
-                                    <input type="email" className="form-control" id="inputEmail"></input>
+                                    <input type="email" className="form-control" id="inputEmail" name="signupEmail"></input>
                                 </div>
                                 <div className="form-group">
                                     <label for="inputMessage">Password</label>
-                                    <input type="text" className="form-control" id="inputMessage"></input>
+                                    <input type="text" className="form-control" id="inputMessage" name="signupPassword"></input>
                                 </div>
                                 <button type="submit" className="btn btn-primary">Press Start</button>
                             </form>
@@ -34,11 +33,11 @@ function LoginSignup() {
                                 <form>
                                     <div className="form-group">
                                         <label for="inputEmail">Email</label>
-                                        <input type="email" className="form-control" id="inputEmail"></input>
+                                        <input type="email" className="form-control" id="inputEmail" name="loginEmail"></input>
                                     </div>
                                     <div className="form-group">
                                         <label for="inputMessage">Password</label>
-                                        <input type="text" className="form-control" id="inputMessage"></input>
+                                        <input type="text" className="form-control" id="inputMessage" name="loginPassword"></input>
                                     </div>
                                     <button type="submit" className="btn btn-primary">Press Start</button>
                                 </form>
@@ -47,7 +46,7 @@ function LoginSignup() {
                         </div>
                     </div>
                 </div>
-            </div>
+            // </div>
    
     );
 }
