@@ -1,0 +1,26 @@
+.jumbotron2{
+    padding-left: 40px;
+    height: 400px;
+    width: 900px;
+    padding-top: 0px;
+    background-color: #242329;
+    margin-left: 18%;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    font-family: 'Iceland', cursive;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #f4b324;
+    flex-basis: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.track{
+    padding: 0px;
+    margin-top: 20px;
+    margin-left: 12%;
+    height: 200px;
+    width: 200px;
+}
