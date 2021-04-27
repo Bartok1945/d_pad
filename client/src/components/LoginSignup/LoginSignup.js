@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "./LoginSignup.css";
+import API from '../../utils/API';
 
 const LoginSignup = () => {
   const [userData, setUserData] = useState({
@@ -28,14 +29,14 @@ const LoginSignup = () => {
 
   const signUpUser = (userData) => {
     console.log("usrData form signUpUser function ==", userData);
-    axios.post("/api/signup", userData)
+    API.userSignup(userData)
       .then(console.log("USER HAS BEEN SIGNED UP!"))
       .catch((err) => console.log(err));
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    axios.post("/api/login/", userData)
+    API.userLogin(userData)
       .then(console.log("USER HAS BEEN LOGGED IN!"))
       .catch((err) => console.log(err));
   };
