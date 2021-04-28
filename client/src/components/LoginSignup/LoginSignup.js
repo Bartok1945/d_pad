@@ -37,6 +37,7 @@ const LoginSignup = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     API.userLogin(userData)
+    // Use react router here to redirect user to the members page 
       .then(console.log("USER HAS BEEN LOGGED IN!"))
       .catch((err) => console.log(err));
   };
