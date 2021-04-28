@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "S1lent0ldMtn$",
+    "password": "P@ssw0rdP@ssw0rd",
     "database": "dpad_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
