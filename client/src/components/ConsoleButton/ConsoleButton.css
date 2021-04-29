@@ -1,0 +1,9 @@
+.images{
+    height: 250px;
+    width: 350px;
+    padding: 10px;  
+    display: block;
+}
+button:active .images{
+    opacity: 50%;
+}
