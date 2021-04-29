@@ -1,5 +1,7 @@
 import React from "react";
 import "./Bar.css";
+import { Link } from 'react-router-dom';
+
 
 function Bar() {
   return (
@@ -18,15 +20,15 @@ function Bar() {
       <div className="collapse navbar-collapse" id="navbarText">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="index.html">
-              Swipe
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="portfolio.html">
-              Playlist
-            </a>
-          </li>
+              <Link to = "/Swipe" className="nav-link">
+                Swipe
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to = "/playlist" className="nav-link">
+                Playlist
+              </Link>
+            </li>
         </ul>
         <span className="navbar-text"></span>
       </div>
