@@ -14,7 +14,4 @@ export default {
     return axios.post("/api/platform/", platformData);
   },
 
-  userGenre: function (genreData) {
-    return axios.post("/api/genre/", genreData);
-  },
 };

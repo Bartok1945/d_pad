@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const usersController = require("../../controllers/usersController");
 const platformController = require("../../controllers/platformController");
-const genreController = require("../../controllers/genreController");
 const passport = require("../../config/passport");
 
 // Matches with "/api/signup"
@@ -16,6 +15,6 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
     });  
 });
 router.post("/platform", platformController.create)
-router.post("/genre", genreController.create)
+
 
 module.exports = router;
