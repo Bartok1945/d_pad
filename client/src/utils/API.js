@@ -9,4 +9,9 @@ export default {
   userLogin: function (userData) {
     return axios.post("/api/login/", userData);
   },
+
+  userPlatform: function (platformData) {
+    return axios.post("/api/platform/", platformData);
+  },
+
 };
