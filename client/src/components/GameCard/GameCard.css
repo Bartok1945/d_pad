@@ -1,0 +1,220 @@
+
+.switch{
+height:auto;
+position:relative; 
+margin: auto;
+width: 100%;
+padding: 10px; 
+}
+
+.jumbotron {
+padding: 0px;
+height: 615px;
+width: 900px;
+padding-top: 0px;
+background-color: #242329;
+margin-left: 12%;
+margin-top: 30px;
+font-family: "Iceland", cursive;
+border-style: solid;
+border-width: 4px;
+border-color: #f4b324; 
+flex-basis: auto;
+text-align: center;
+overflow: auto;
+position:relative; 
+
+}
+
+.gameInfo{
+/* position: relative;   */
+}
+
+/******* switch css  starts here ********/
+.controller {
+background-color: hsl(0, 0%, 20%);
+width: 60%;
+margin-left: 12%;
+/* position: absolute; */
+/* transform: translateX(-50%) translateY(-50%) scale(.5); */
+left: 50%;
+top: 50%;
+/* border-radius: 96px; */
+}
+
+.controller::before,
+.controller::after {
+content: "";
+position: absolute;
+width: 185px;
+height: 620px;
+border: 16px solid rgba(0, 0, 0, 0.2);
+}
+
+.controller::before {
+background-color: #00bbe3;
+left: 6.3%;
+border-right: none;
+border-radius: 96px 0 0 96px;
+}
+
+.controller::after {
+right: 5.5%;
+top: 0px;
+margin-top: 11.1vh;
+background-color: #ff5d4c;
+border-left: none;
+border-radius: 0 96px 96px 0;
+}
+
+.controller-left,
+.controller-right {
+position: absolute;
+}
+
+.controller-left {
+top: 0;
+left: 0;
+}
+
+.controller-right {
+top: 0;
+right: 0;
+}
+
+.controller-joystick {
+position: absolute;
+display: inline-block;
+width: 105px;
+height: 105px;
+/* background-color: #333333; */
+z-index: 10;
+border: 15px solid black;
+border-radius: 50%;
+}
+
+.controller-left .controller-joystick {
+top: 30vh;
+left: 10vw;
+background-color: #e42929;
+margin-top: 0%;
+}
+
+.fa-thumbs-down {
+font-size: 50px;
+margin-left: 12px;
+margin-top: 15px;
+}
+
+.controller-right .controller-joystick {
+top: 60vh;
+right: 9vw;
+background-color: #3cbe37;
+}
+
+.fa-thumbs-up {
+font-size: 50px;
+margin-left: 10px;
+margin-top: 7px;
+}
+
+.buttons {
+z-index: 1;
+width: 140px;
+height: 140px;
+position: absolute;
+transform: rotate(45deg);
+}
+
+.buttons.button-arrows button::after {
+content: "";
+}
+
+.controller-left .buttons {
+top: 55vh;
+left: 9vw;
+}
+
+.controller-right .buttons {
+top: 200px;
+right: 7.5vw;
+}
+
+.button {
+background-color: black;
+border-radius: 50%;
+width: 45px;
+height: 45px;
+display: inline-block;
+margin: 8px;
+}
+
+.button-home,
+.button-capture {
+position: absolute;
+z-index: 1;
+top: 600px;
+}
+
+.button-home {
+border-radius: 25%;
+left: 14vw;
+}
+
+.button-capture {
+right: 14vw;
+}
+
+.controller-left .controller-handle {
+left: -5px;
+}
+
+.controller-right .controller-handle {
+transform: scale(2, 4) skew(25deg);
+right: -57px;
+}
+
+.button-minus,
+.button-plus {
+position: absolute;
+z-index: 2;
+width: 30px;
+height: 10px;
+border-radius: 5px;
+background-color: black;
+top: 20vh;
+}
+
+.button-minus {
+left: 16vw;
+}
+
+.button-plus {
+right: 15vw;
+}
+
+.button-plus::before {
+display: inline-block;
+position: absolute;
+content: "";
+width: inherit;
+height: inherit;
+border-radius: inherit;
+transform: rotate(90deg);
+background-color: inherit;
+z-index: 2;
+}
+
+.carousel-inner {
+height: 550px;
+top: 0px;
+flex-basis: auto;
+text-align: center;
+overflow: auto;
+}
+
+.carousel-caption {
+    position: relative;
+    left: 0;
+    top: 0;
+    }
