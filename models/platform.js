@@ -27,10 +27,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Console.associate = (models) => {
-      Console.belongsToMany(models.User, {
-        through: "console_users",
-        foreignKey: "console_id"
-      })
+      Console.belongsTo(models.User)
     }
     return Console;
   };

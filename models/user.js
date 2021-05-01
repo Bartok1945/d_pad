@@ -33,10 +33,7 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   User.associate = (models) => {
-    User.belongsToMany(models.Console, {
-      through: "console_users",
-      foreignKey: "user_id"
-  })
+    User.hasOne(models.Console)
 }
   return User;
 };

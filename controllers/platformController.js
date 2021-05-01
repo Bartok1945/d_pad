@@ -3,15 +3,17 @@ const db = require("../models");
 // Defining methods for the platformController
 module.exports = {
   create: function (req, res) {
-    console.log("INSIDE THE PLATFORM CREATE")
-    db.Platform
+    if(!req.user) {
+      res.redirect("/")
+    }
+    db.Console
       .create({
         PS5: req.body.PS5,
         XboxOne: req.body.XboxOne,
         XboxSeries: req.body.XboxSeries,
         PS4: req.body.PS4,
-        Switch: req.body.switch,
-        PC: req.body.pc,
+        Switch: req.body.Switch,
+        PC: req.body.PC,
         UserId: req.user.id
       })
       .then(() => {
