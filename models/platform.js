@@ -23,7 +23,14 @@ module.exports = function(sequelize, DataTypes) {
       PC: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
-      }
+      },
     });
+
+    Console.associate = (models) => {
+      Console.belongsToMany(models.User, {
+        through: "console_users",
+        foreignKey: "console_id"
+      })
+    }
     return Console;
   };

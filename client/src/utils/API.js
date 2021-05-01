@@ -11,7 +11,7 @@ export default {
   },
 
   userPlatform: function (platformData) {
-    return axios.post("/api/platform/", platformData);
+    return axios.post("/api/platforms/", platformData, {withCredentials: true});
   },
 
 };

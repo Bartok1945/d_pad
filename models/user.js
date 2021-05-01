@@ -31,5 +31,12 @@ module.exports = function (sequelize, DataTypes) {
       null
     );
   });
+
+  User.associate = (models) => {
+    User.belongsToMany(models.Console, {
+      through: "console_users",
+      foreignKey: "user_id"
+  })
+}
   return User;
 };

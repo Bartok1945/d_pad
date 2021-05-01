@@ -1,6 +1,6 @@
 const db = require("../models");
 
-// Defining methods for the booksController
+// Defining methods for the platformController
 module.exports = {
   create: function (req, res) {
     db.Platform
@@ -10,8 +10,8 @@ module.exports = {
         XboxSeries: req.body.XboxSeries,
         PS4: req.body.PS4,
         Switch: req.body.switch,
-        PC: req.body.pc
-  
+        PC: req.body.pc,
+        UserId: req.user.id
       })
       .then(() => {
         console.log("db.Platform ==", db.Platform)

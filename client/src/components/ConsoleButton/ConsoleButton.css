@@ -4,6 +4,14 @@
     padding: 10px;  
     display: block;
 }
-button:active .images{
+.button{
     opacity: 50%;
+    margin: 2%;
+    background-color:rgb(88, 96, 136);
+}
+.buttonPressed{
+    opacity: 100%;
+    margin: 2%;
+    background-color: #d1233b;
+
 }
