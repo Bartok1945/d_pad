@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ConsoleButton.css"
 
 const BUTTONS = [
@@ -53,5 +53,6 @@ class ConsoleButton extends React.Component {
             </div>
     );}
 } 
+
 
 export default ConsoleButton;
