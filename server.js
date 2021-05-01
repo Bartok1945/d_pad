@@ -4,6 +4,8 @@ const session = require("express-session");
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
 const routes = require("./routes");
+// const cookieSession = require("cookie-session");
+const cookieParser = require("cookie-parser"); // parse cookie header
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 3001;
@@ -14,6 +16,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(cookieParser());
 // We need to use sessions to keep track of our user's login status
 app.use(
   session({ secret: "keyboard cat", resave: false, saveUninitialized: false })
@@ -21,9 +24,17 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// app.use(
+//   cookieSession({
+//     name: "session",
+//     resave: true,
+//     keys: ["dpad"],
+//     maxAge: 24 * 60 * 60 * 100,
+//   })
+// );
+
 // Requiring our routes
 app.use(routes);
-
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {

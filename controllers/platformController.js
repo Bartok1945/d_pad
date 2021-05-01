@@ -3,6 +3,7 @@ const db = require("../models");
 // Defining methods for the platformController
 module.exports = {
   create: function (req, res) {
+    console.log("INSIDE THE PLATFORM CREATE")
     db.Platform
       .create({
         PS5: req.body.PS5,
