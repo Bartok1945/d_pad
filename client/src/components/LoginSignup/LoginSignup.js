@@ -1,13 +1,15 @@
-import axios from "axios";
 import React, { useState } from "react";
 import "./LoginSignup.css";
 import API from '../../utils/API';
+import { useHistory } from "react-router-dom";
 
 const LoginSignup = () => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+
+  let history = useHistory();
 
   const onChange = (event) => {
     event.preventDefault();
@@ -31,6 +33,7 @@ const LoginSignup = () => {
     console.log("usrData form signUpUser function ==", userData);
     API.userSignup(userData)
       .then(console.log("USER HAS BEEN SIGNED UP!"))
+      .then(response => {response.status === 200 ? history.push('/consolepages') : console.log("something aint right")})
       .catch((err) => console.log(err));
   };
 
@@ -39,6 +42,7 @@ const LoginSignup = () => {
     API.userLogin(userData)
     // Use react router here to redirect user to the members page 
       .then(console.log("USER HAS BEEN LOGGED IN!"))
+      .then(response => {response.status === 200 ? history.push('/consolepages') : console.log("something aint right")})
       .catch((err) => console.log(err));
   };
 

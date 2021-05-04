@@ -17,7 +17,21 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    games: {
+      type: DataTypes.STRING,
+      allowNull: true, 
+      defaultValue: '[]',
+      get: function() {
+        return JSON.parse(this.getDataValue('games'));
+      }, 
+      set: function(val) {
+        return this.setDataValue('games+', JSON.stringify(val));
+    }
+    }
   });
+
+  
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
@@ -31,5 +45,9 @@ module.exports = function (sequelize, DataTypes) {
       null
     );
   });
+
+  User.associate = (models) => {
+    User.hasMany(models.Likes)
+}
   return User;
 };
