@@ -1,108 +1,58 @@
-import React, { useState, useEffect } from "react";
-import "./ConsoleButton.css";
-import API from "../../utils/API";
-import axios from "axios";
+import React, { useState } from "react";
+import "./ConsoleButton.css"
 
-const ConsoleButton = () => {
+const BUTTONS = [
+    {id:"xbox series x", title:'xbox series x',src:"https://user-images.githubusercontent.com/74163812/115413574-4a2ba100-a1c3-11eb-9e31-df0c27c42236.png"},
+    {id:"xbox one", title:'xbox on',src:"https://user-images.githubusercontent.com/74163812/115413645-557ecc80-a1c3-11eb-9c9e-37bddeb52b5b.png"},
+    {id:"switch", title:'switch',src:"https://user-images.githubusercontent.com/74163812/116321936-10d9cf00-a789-11eb-920f-9253a9ae301e.png"},
+    {id:"ps5", title:'ps5',src:"https://user-images.githubusercontent.com/74163812/115413821-819a4d80-a1c3-11eb-9c90-268ea194502b.png"},
+    {id:"ps4", title:'ps4',src:"https://user-images.githubusercontent.com/74163812/115413889-8fe86980-a1c3-11eb-8332-1f0174e68514.png"},
+    {id:"PC", title:'PC',src:"https://user-images.githubusercontent.com/74163812/115414117-c58d5280-a1c3-11eb-8d21-5ded721aace5.png"},
+]
 
-  const [games, setGames] = useState([]);
-  const [platform, setPlatform] = useState();
-
-  useEffect(() => {
-    {platform === 'All' ?
-    API.getAllGames()
-    .then((response) => setGames(response.data.results))
-    .then(() => console.log('games state when selecting ALL', games))
-    .catch((err) =>
-        console.log("The following error occurred getting games = ", err))
-    :
-    console.log("getConsoleGames request")
-    API.getConsoleGames(platform)
-      .then((response) => setGames(response.data.results))
-      .then(() => console.log('games state when selecting ANYTHING ELSE', games))
-      .catch((err) =>
-        console.log("The following error occurred getting games = ", err)
-      );
-  }
-  }, [platform]);
-
-  const handleConsoleSelection = (event) => {
-    event.preventDefault();
-    const { value } = event.target;
-    console.log("EVVENT ==", value)
-
-    setPlatform(value);
-  };
-
-//   const getGames = (platform) => {
-//     console.log('platform in getGames ==', platform)
-//     {platform === 'All' ?
-//     API.getAllGames()
-//     .then((response) => setGames(response.data.results))
-//     .then(() => console.log('games state when selecting ALL', games))
-//     .catch((err) =>
-//         console.log("The following error occurred getting games = ", err))
-//     :
-//     console.log("getConsoleGames request")
-//     API.getConsoleGames(platform)
-//       .then((response) => setGames(response.data.results))
-//       .then(() => console.log('games state when selecting ANYTHING ELSE', games))
-//       .catch((err) =>
-//         console.log("The following error occurred getting games = ", err)
-//       );
-//   }
-//   console.log('Filter ==', platform)
-
-// };
-
-const likeGame = async(event) => {
-    const { name } = event.target;
-    // API.addGame(name)
-    const user = await axios.get('/api/users/auth/me') 
-    if(!user){
-        console.log('USER NOT LOGGED IN')
+class ConsoleButton extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            values: []
+        }
     }
-    console.log('USER FROM LIKE GAME FUNCTION -> ', user)
-    
+    handleButton = button => {
+        let tmp = this.state.values;
+        if (this.state.values.includes(button)) {
+            this.setState({
+                values: this.state.values.filter(el => el !== button)
+            })
+        } else {
+            tmp.push(button);
+            this.setState({
+                values: tmp
+            })
+        }
+    }
+    render () {
+        return (
+            <div>
+                <div className="container-text">
+                    <div className="jumbotron-body">
+                        <main>
+                            <div className="container">
+                                <div className="row align-items-start">
+                                    {BUTTONS.map(bt => (
+                                        <button key={bt.id} onClick={() => this.handleButton(bt.id)} className={this.state.values.includes(bt.id) ? "buttonPressed" : "button"}>
+                                            <img className="images"
+                                                src={bt.src}
+                                                alt={bt.id}/>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            </div>
+    );}
+} 
 
-}
-
-const dislikeGame = (event) => {
-
-}
-
-  return (
-    <div>
-        <form>
-        <select onChange={(event) => handleConsoleSelection(event)}>
-          <option value="-">-</option>
-          <option value="All" name="All">All</option>
-          <option value={187} name="Playstation5">Playstation 5</option>
-          <option value={186} name="XboxSeries">Xbox Series</option>
-          <option value={7} name="Switch">Switch</option>
-          <option value={4} name="PC">PC</option>
-        </select>
-        </form>
-      <br />
-      <br />
-      {/* {games.length === 0 ? <p className="text-white">GAMES ARE ZERO</p> : <p>GAMES ARE A PLENTY</p>} */}
-      {games.length === 0 ? <p className="text-white">No games found, please select a fucking console.</p> :
-      games.map((game) => {
-        return ( 
-        <div className={"text-white"}>
-        <h5>Title: {game.name}</h5>
-        <li>Released: {game.released}</li>
-        <li>Rating: {game.rating} / 5</li>
-        <br />
-        <button name={game.name} onClick={(evt) => likeGame(evt)}>LIKE</button>
-        <button onClick={(event) => dislikeGame(event)}>DISLIKE</button>
-        <br/>
-        <br />
-        </div>
-        
-      )})}
-    </div>
-  );
-};
 
 export default ConsoleButton;

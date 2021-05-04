@@ -7,7 +7,6 @@ export default {
     return axios.post("/api/users/signup/", userData);
   },
 
-  // Adding new user credentials to DB
   userLogin: function (userData) {
     return axios.post("/api/users/login/", userData);
   },
@@ -19,10 +18,4 @@ export default {
   getAllGames: function() {
     return axios.get(`https://api.rawg.io/api/games?key=5d1684169bcc4a8499314bf0b87bd008&language=eng&page_size=300`)
   },
-
-  addGame: function(gameData) {
-    return axios.post("/games", gameData)
-  },
-
-  
 };

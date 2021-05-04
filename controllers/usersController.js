@@ -1,6 +1,6 @@
 const db = require("../models");
 
-// Defining methods for the userssController
+// Defining methods for the usersController
 module.exports = {
   create: function(req, res) {
     console.log("CREATE from UserConstroller");
@@ -10,7 +10,6 @@ module.exports = {
         password: req.body.password,
       })
       .then((user) => {
-        // res.sendStatus(200);
         req.login(user, function(err) {
           console.log("INSIDE REQ.LOGIN ==", user)
           if (err) { return console.log("ERROR ->", err);}
