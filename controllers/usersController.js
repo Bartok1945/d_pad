@@ -1,19 +1,21 @@
 const db = require("../models");
 
-// Defining methods for the booksController
+// Defining methods for the userssController
 module.exports = {
   create: function(req, res) {
+    console.log("CREATE from UserConstroller");
     db.User
     .create({
         email: req.body.email,
         password: req.body.password,
       })
       .then((user) => {
-        res.sendStatus(200);
+        // res.sendStatus(200);
         req.login(user, function(err) {
-          if (err) { return next(err); }
-          return res.redirect('/api/users/login');
-        });
+          console.log("INSIDE REQ.LOGIN ==", user)
+          if (err) { return console.log("ERROR ->", err);}
+          return res.json(user)
+        })
       })
       .catch((err) => {
         console.log("Error signing Up -", err);

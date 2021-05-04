@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ConsoleButton.css";
 import API from "../../utils/API";
 import axios from "axios";
@@ -8,17 +8,7 @@ const ConsoleButton = () => {
   const [games, setGames] = useState([]);
   const [platform, setPlatform] = useState();
 
-  const handleConsoleSelection = (event) => {
-    event.preventDefault();
-    const { value } = event.target;
-    console.log("EVVENT ==", value)
-
-    setPlatform(value);
-    getGames(platform);
-  };
-
-  const getGames = () => {
-    console.log('platform ==', platform)
+  useEffect(() => {
     {platform === 'All' ?
     API.getAllGames()
     .then((response) => setGames(response.data.results))
@@ -34,9 +24,36 @@ const ConsoleButton = () => {
         console.log("The following error occurred getting games = ", err)
       );
   }
-  console.log('Filter ==', platform)
+  }, [platform]);
 
-};
+  const handleConsoleSelection = (event) => {
+    event.preventDefault();
+    const { value } = event.target;
+    console.log("EVVENT ==", value)
+
+    setPlatform(value);
+  };
+
+//   const getGames = (platform) => {
+//     console.log('platform in getGames ==', platform)
+//     {platform === 'All' ?
+//     API.getAllGames()
+//     .then((response) => setGames(response.data.results))
+//     .then(() => console.log('games state when selecting ALL', games))
+//     .catch((err) =>
+//         console.log("The following error occurred getting games = ", err))
+//     :
+//     console.log("getConsoleGames request")
+//     API.getConsoleGames(platform)
+//       .then((response) => setGames(response.data.results))
+//       .then(() => console.log('games state when selecting ANYTHING ELSE', games))
+//       .catch((err) =>
+//         console.log("The following error occurred getting games = ", err)
+//       );
+//   }
+//   console.log('Filter ==', platform)
+
+// };
 
 const likeGame = async(event) => {
     const { name } = event.target;

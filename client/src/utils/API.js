@@ -21,7 +21,7 @@ export default {
   },
 
   addGame: function(gameData) {
-    return axios.post("/likes", gameData)
+    return axios.post("/games", gameData)
   },
 
   

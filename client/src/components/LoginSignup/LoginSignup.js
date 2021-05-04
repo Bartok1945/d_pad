@@ -35,15 +35,16 @@ let history = useHistory();
     API.userSignup(userData)
       .then(console.log("USER HAS BEEN SIGNED UP!"))
       .then(response => {response.status === 200 ? history.push('/consolepages') : console.log("something aint right")})
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("SIGN UP ERROR ==>", err));
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
+    console.log("USER DATA ==", userData)
     API.userLogin(userData)
-    // Use react router here to redirect user to the members page 
       .then(console.log("USER HAS BEEN LOGGED IN!"))
-      .catch((err) => console.log(err));
+      .then(response => {response.status === 200 ? history.push('/consolepages') : console.log("something aint right")})
+      .catch((err) => console.log("LOGIN ERROR ==>", err));
   };
 
   return (

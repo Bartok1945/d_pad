@@ -6,7 +6,11 @@ const bcrypt = require('bcryptjs')
 const UserSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
-  games: { type: Array },
+  games: [{ 
+    id: {type: Number},
+    name: {type: String, trim: true},
+    platforms: {type: Array}
+  }],
 });
 
 // UserSchema.methods.generateHash = (password) => 
@@ -27,12 +31,12 @@ UserSchema.methods = {
 }
 
 UserSchema.pre('save', function (next) {
-  console.log("THIS IN PRE SAVE ==", this)
+  // console.log("THIS IN PRE SAVE ==", this)
   if (!this.password) {
     console.log('models/user.js =======NO PASSWORD PROVIDED=======')
     next()
   } else {
-    console.log('models/user.js hashPassword in pre save');
+    // console.log('models/user.js hashPassword in pre save');
     this.password = this.hashPassword(this.password)
     console.log('this.password ==', this.password)
     next()
