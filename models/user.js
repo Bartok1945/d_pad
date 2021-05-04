@@ -1,35 +1,44 @@
-// Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
-const bcrypt = require("bcryptjs");
-// Creating our User model
-module.exports = function (sequelize, DataTypes) {
-  const User = sequelize.define("User", {
-    // The email cannot be null, and must be a proper email before creation
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
-    // The password cannot be null
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  });
-  // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-  User.prototype.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
-  };
-  // Hooks are automatic methods that run during various phases of the User Model lifecycle
-  // In this case, before a User is created, we will automatically hash their password
-  User.addHook("beforeCreate", (user) => {
-    user.password = bcrypt.hashSync(
-      user.password,
-      bcrypt.genSaltSync(10),
-      null
-    );
-  });
-  return User;
-};
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const bcrypt = require('bcryptjs')
+
+
+const UserSchema = new Schema({
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+  games: { type: Array },
+});
+
+// UserSchema.methods.generateHash = (password) => 
+//     bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+
+// UserSchema.methods.validPassword = function(password) {
+//   console.log('this.password', password);
+//   return bcrypt.compareSync(password, password);
+// };
+
+UserSchema.methods = {
+  checkPassword: function (inputPassword) {
+  return bcrypt.compareSync(inputPassword, this.password)
+},
+  hashPassword: plainTextPassword => {
+  return bcrypt.hashSync(plainTextPassword, 10)
+  }
+}
+
+UserSchema.pre('save', function (next) {
+  console.log("THIS IN PRE SAVE ==", this)
+  if (!this.password) {
+    console.log('models/user.js =======NO PASSWORD PROVIDED=======')
+    next()
+  } else {
+    console.log('models/user.js hashPassword in pre save');
+    this.password = this.hashPassword(this.password)
+    console.log('this.password ==', this.password)
+    next()
+  }
+})
+
+const User = mongoose.model("User", UserSchema);
+
+module.exports = User;
