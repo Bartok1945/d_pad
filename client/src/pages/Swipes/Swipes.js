@@ -5,7 +5,6 @@ import Bar from "../../components/Bar/Bar";
 import API from "../../utils/API";
 
 const Swipes = () => {
-  // Setting this.state.games to the games json array
   const [games, setGames] = useState([]);
   const [platform, setPlatform] = useState();
 
@@ -35,8 +34,20 @@ const Swipes = () => {
     setGames(games);
   };
 
-  const addGame = (id) => {
-    games.filter((game) => game.id !== id);
+  const addGame = (game) => {
+    let gameData = {
+      id: game.id,
+      title: game.name
+    }
+    console.log("GAME DATA", gameData)
+    API.addGame(gameData)
+    .then(() =>
+          console.log("gameData", gameData)
+        )
+        .catch((err) =>
+          console.log("The following error occurred adding games = ", err)
+        );
+    // games.filter((game) => game.id !== id);
     setGames(games);
   };
 
@@ -78,7 +89,7 @@ const Swipes = () => {
         <GameCard
           id={game.id}
           removeGame={removeGame}
-          addGame={addGame}
+          addGame={() => addGame(game)}
           key={game.id}
           name={game.name}
           image={game.background_image}

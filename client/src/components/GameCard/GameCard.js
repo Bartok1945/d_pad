@@ -1,6 +1,5 @@
 import React from "react";
 import "./GameCard.css";
-// import Carousel from 'react-bootstrap/Carousel'
 
 function GameCard(props) {
   return (
@@ -58,13 +57,13 @@ function GameCard(props) {
         <div>
           <div className="controller-right p-0">
             <div className="button-plus"></div>
-            <div
+            <button
               onClick={() => props.addGame(props.id)}
               className="add"
               id="controller-joystick"
             >
-              <i className="fas fa-thumbs-up"></i>
-            </div>
+              <i className="fas fa-thumbs-up">ADD</i>
+            </button>
             <div className="button-top button-top-right"></div>
             <div className="buttons">
               <div className="button"></div>

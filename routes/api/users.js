@@ -16,10 +16,15 @@ router.post("/login", passport.authenticate("local"), (req, res)  => {
   }
 );
 
-router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/");
-});
-
+router.post("/game", (req, res) => {
+  let gameData = {
+    id: req.body.id,
+    title: req.body.title,
+  };
+  usersController.addGameToUser(gameData, req.user.id)
+  .then(() => res.send(gameData))
+  .catch((err) => console.log("ERROR =>", err))
+ }
+);
 
 module.exports = router;
