@@ -6,6 +6,7 @@ import PageWrapper from './components/PageWrapper/PageWrapper';
 import Homepage from './pages/Homepage/Homepage';
 import ConsolePages from './pages/ConsolePage/ConsolePage';
 import Swipes from './pages/Swipes/Swipes';
+import PlaylistPage from './pages/PlaylistPage/PlaylistPage';
 
 
 
@@ -18,6 +19,7 @@ function App() {
             <Route exact path={["/", "/Homepage"]} component={Homepage} />
             <Route exact path={"/ConsolePages"} component={ConsolePages} />
             <Route exact path={"/Swipe"} component={Swipes}/>
+            <Route exact path={"/playlist"} component={PlaylistPage}/>
           </Switch>
         </PageWrapper>
         
