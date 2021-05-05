@@ -34,7 +34,7 @@ let history = useHistory();
     console.log("usrData form signUpUser function ==", userData);
     API.userSignup(userData)
       .then(console.log("USER HAS BEEN SIGNED UP!"))
-      .then(response => {response.status === 200 ? history.push('/consolepages') : console.log("something aint right")})
+      .then(response => {response.status === 200 ? history.push('/swipes') : console.log("something aint right")})
       .catch((err) => console.log("SIGN UP ERROR ==>", err));
   };
 
@@ -43,7 +43,7 @@ let history = useHistory();
     console.log("USER DATA ==", userData)
     API.userLogin(userData)
       .then(console.log("USER HAS BEEN LOGGED IN!"))
-      .then(response => {response.status === 200 ? history.push('/consolepages') : console.log("something aint right")})
+      .then(response => {response.status === 200 ? history.push('/swipes') : console.log("something aint right")})
       .catch((err) => console.log("LOGIN ERROR ==>", err));
   };
 
