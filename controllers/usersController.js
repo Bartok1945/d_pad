@@ -44,7 +44,7 @@ module.exports = {
     return db.User.findOne({ _id: userID })
       .then((dbUser) => {
         let savedGames = dbUser.games.map((game) => game.id);
-        {savedGames.includes(gameData.id) ? console.log("GAME FOUND") :
+        {!savedGames.includes(gameData.id) ? console.log("GAME NOT FOUND") :
           dbUser.games.remove()
         }
         console.log("DB-USER =>", dbUser)
