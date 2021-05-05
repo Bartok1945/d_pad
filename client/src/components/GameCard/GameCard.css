@@ -175,7 +175,7 @@
 }
 
 .controller-left #controller-joystick {
-  z-index: 0;
+  z-index: 10;
   left: 10vw;
   width: 55%;
   height: 15%;

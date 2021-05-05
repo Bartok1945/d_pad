@@ -37,6 +37,11 @@ function GameCard(props) {
                     />
                   </div>
                   <div className="content">
+                  <button
+                onClick={() => props.removeGame(props.id)}
+                className="add"
+                id="controller-joystick"
+              >REMOVE GAME</button>
                     <ul>
                       <li>
                         <strong>Title:</strong> {props.name}

@@ -22,4 +22,8 @@ export default {
   addGame: function (gameData) {
     return axios.post("/api/users/game/", gameData);
   },
+
+  removeGame: function (gameData) {
+    return axios.delete("/api/users/game/", gameData);
+  },
 };

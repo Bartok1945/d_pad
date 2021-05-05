@@ -27,7 +27,26 @@ module.exports = {
     console.log("userID in addGametoUser", userID)
     return db.User.findOne({ _id: userID })
       .then((dbUser) => {
+        {dbUser.games.map((game) => game.id).includes(gameData.id) ? dbUser.save() : 
         dbUser.games.push(gameData);
+        console.log("DB-USER =>", dbUser)
+        return dbUser.save();
+      }})
+      .then((dbModel) => {
+        console.log("dbModel from addGametoUser", dbModel)
+        res.json(dbModel)
+      })
+      .catch((err) => res.status(422).json(err));
+  },
+
+  removeGameFromUser: function (gameData, userID) {
+    console.log("userID in addGametoUser", userID)
+    return db.User.findOne({ _id: userID })
+      .then((dbUser) => {
+        let savedGames = dbUser.games.map((game) => game.id);
+        {savedGames.includes(gameData.id) ? console.log("GAME FOUND") :
+          dbUser.games.remove()
+        }
         console.log("DB-USER =>", dbUser)
         return dbUser.save();
       })
