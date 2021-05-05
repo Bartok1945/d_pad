@@ -20,7 +20,7 @@ function Bar() {
       <div className="collapse navbar-collapse" id="navbarText">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item active">
-              <Link to = "/Swipe" className="nav-link">
+              <Link to = "/Swipes" className="nav-link">
                 Swipe
               </Link>
             </li>

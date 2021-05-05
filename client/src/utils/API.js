@@ -18,4 +18,12 @@ export default {
   getAllGames: function() {
     return axios.get(`https://api.rawg.io/api/games?key=5d1684169bcc4a8499314bf0b87bd008&language=eng&page_size=300`)
   },
+
+  addGame: function (gameData) {
+    return axios.post("/api/users/game/", gameData);
+  },
+
+  removeGame: function (gameData) {
+    return axios.delete("/api/users/game/", gameData);
+  },
 };

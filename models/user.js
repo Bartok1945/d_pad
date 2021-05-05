@@ -8,18 +8,9 @@ const UserSchema = new Schema({
   password: { type: String, required: true },
   games: [{ 
     id: {type: Number},
-    name: {type: String, trim: true},
-    platforms: {type: Array}
+    title: {type: String, trim: true},
   }],
 });
-
-// UserSchema.methods.generateHash = (password) => 
-//     bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-
-// UserSchema.methods.validPassword = function(password) {
-//   console.log('this.password', password);
-//   return bcrypt.compareSync(password, password);
-// };
 
 UserSchema.methods = {
   checkPassword: function (inputPassword) {
