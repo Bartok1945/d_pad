@@ -8,7 +8,7 @@ const PlaylistPage = () => {
 
   useEffect(() => {
     API.getUser()
-    .then((res) => console.log(res))
+    .then((res) => console.log("get user res =>", res))
     .catch((err) => console.log(err))
   })
 

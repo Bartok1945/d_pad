@@ -1,14 +1,20 @@
 import React from "react";
 import "./Bar.css";
 import { Link } from "react-router-dom";
-import axios from 'axios';
 import API from '../../utils/API';
+import { useHistory } from "react-router-dom";
+
 
 const Bar = () => {
 
+  let history = useHistory();
+
   const handleLogout = () => {
     console.log("INSIDE HANDLELOGOUT FUNCTION")
-    API.userLogout();
+    API.userLogout()
+    .then((res) => console.log("res from logout", res))
+    .then(response => {response.status === 200 ? history.push('/') : console.log("something aint right")})
+    .catch((err) => console.log(err))
   };
 
   return (

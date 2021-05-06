@@ -39,9 +39,10 @@ router.delete("/game", (req, res) => {
 );
 
 router.get("/logout", (req, res) => {
+  req.session.destroy(function (err) {
+    res.redirect('/');
   console.log("router.get logout route")
-  req.logout();
-  res.redirect('/');
+})
 })
 
 router.get("/auth", isLoggedIn, (req, res) => {
