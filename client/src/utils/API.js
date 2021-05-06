@@ -26,4 +26,12 @@ export default {
   removeGame: function (gameData) {
     return axios.delete("/api/users/game/", gameData);
   },
+
+  userLogout: function () {
+    return axios.get('/api/users/logout/');
+  },
+
+  getUser: function () {
+    return axios.get("/api/users/auth/");
+  }
 };

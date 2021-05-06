@@ -1,8 +1,16 @@
 import React from "react";
 import "./Bar.css";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import API from '../../utils/API';
 
-function Bar() {
+const Bar = () => {
+
+  const handleLogout = () => {
+    console.log("INSIDE HANDLELOGOUT FUNCTION")
+    API.userLogout();
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-right">
       <button
@@ -29,9 +37,7 @@ function Bar() {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/" className="nav-link">
-              Logout
-            </Link>
+            <button className="nav-link logout-button" onClick={handleLogout}>Logout</button>
           </li>
         </ul>
         <span className="navbar-text"></span>

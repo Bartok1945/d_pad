@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const session = require('express-session');
+// const MongoStore = require('connect-mongo')(session)
 const PORT = process.env.PORT || 3001;
+// const dbConnection = require('./models')
 
 
 // Define middleware here
@@ -19,6 +21,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(
   session({
   secret: 'fraggle-rock', //random string to make the hash that is generated secure
+  // store: new MongoStore({ mongooseConnection: dbConnection }),
   resave: false, //required
   saveUninitialized: false //required
   })

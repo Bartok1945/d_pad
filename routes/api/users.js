@@ -38,4 +38,26 @@ router.delete("/game", (req, res) => {
  }
 );
 
+router.get("/logout", (req, res) => {
+  console.log("router.get logout route")
+  req.logout();
+  res.redirect('/');
+})
+
+router.get("/auth", isLoggedIn, (req, res) => {
+  res.status(200).json({
+      'message': "This is secured user routing"
+  });
+});
+
 module.exports = router;
+
+function isLoggedIn(req, res, next) {
+  if (req.user) {
+    res.json({
+      email: req.user.email,
+    })
+  } else {
+    res.redirect("/");
+  }
+};
