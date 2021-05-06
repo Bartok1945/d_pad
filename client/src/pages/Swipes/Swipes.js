@@ -10,6 +10,12 @@ const Swipes = () => {
   const [platform, setPlatform] = useState();
 
   useEffect(() => {
+    API.getUser()
+    .then((res) => console.log("get user res =>", res))
+    .catch((err) => console.log(err))
+  })
+
+  useEffect(() => {
     {
       platform === "All"
         ? API.getAllGames()
