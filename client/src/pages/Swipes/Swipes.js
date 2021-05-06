@@ -68,6 +68,13 @@ const Swipes = () => {
       setPlatform(value);
   }
 
+  const gameDescription = (gameID) => { 
+    // console.log("Game ID ", gameID)
+    let rawGameDescription;
+    API.getGameDescription(gameID)
+    .then((res) => res.data.description_raw)
+    .catch((err) => console.log("ERROR FROM getGameDescription", err))
+  }
   return (
     <PageWrapper>
       <Bar />
@@ -110,6 +117,7 @@ const Swipes = () => {
           platforms={game.platforms.map(p => `${p.platform.name}   | ` )}
           rating={game.rating}
           released={game.released}
+          description={gameDescription(game.id)}
         />
       ))
       }

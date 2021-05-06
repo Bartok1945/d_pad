@@ -26,4 +26,7 @@ export default {
   removeGame: function (gameData) {
     return axios.delete("/api/users/game/", gameData);
   },
+  getGameDescription: function(gameID) {
+    return axios.get(`https://api.rawg.io/api/games/${gameID}?key=5d1684169bcc4a8499314bf0b87bd008`)
+  },
 };
