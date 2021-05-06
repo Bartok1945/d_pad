@@ -34,6 +34,7 @@ const Swipes = () => {
     let gameData = {
       id: game.id,
       title: game.name
+      
     }
     API.removeGame(gameData)
     .then(() =>
@@ -69,11 +70,16 @@ const Swipes = () => {
   }
 
   const gameDescription = (gameID) => { 
-    // console.log("Game ID ", gameID)
-    let rawGameDescription;
+    console.log("Game ID ", gameID)
+
+     let rawGameDescription ;
+ 
     API.getGameDescription(gameID)
-    .then((res) => res.data.description_raw)
+    
+    .then((res) =>rawGameDescription = (res.data.description_raw))
     .catch((err) => console.log("ERROR FROM getGameDescription", err))
+   return gameID
+    
   }
   return (
     <PageWrapper>

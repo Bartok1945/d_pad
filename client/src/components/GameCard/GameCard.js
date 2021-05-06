@@ -52,7 +52,7 @@ function GameCard(props) {
                         <strong>Release Date:</strong> {props.released}
                       </li>
                       <li>
-                        <strong>Description:</strong> {props.gameDescription}
+                        <strong>Description:</strong> {props.description}
                       </li>
                     </ul>
                   </div>
