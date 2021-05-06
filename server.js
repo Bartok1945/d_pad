@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const session = require('express-session');
+const cors = require('cors');
 // const MongoStore = require('connect-mongo')(session)
 const PORT = process.env.PORT || 3001;
 
@@ -35,6 +36,7 @@ app.use(passport.session())
 
 // Add routes, both API and view
 app.use(routes);
+app.use(cors());
 
 
 // Connect to the Mongo DB

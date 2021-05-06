@@ -12,11 +12,11 @@ export default {
   },
 
   getConsoleGames: function(query) {
-    return axios.get(`https://api.rawg.io/api/games?key=5d1684169bcc4a8499314bf0b87bd008&language=eng&page_size=300&platforms=${query}`)
+    return axios.get(`https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100&platforms=${query}`)
   },
 
   getAllGames: function() {
-    return axios.get(`https://api.rawg.io/api/games?key=5d1684169bcc4a8499314bf0b87bd008&language=eng&page_size=300`)
+    return axios.get(`https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100`)
   },
 
   addGame: function (gameData) {

@@ -25,6 +25,7 @@
     "bootstrap": "^4.6.0",
     "bootstrap-react": "^0.5.0-alpha.14",
     "connect-mongo": "^3.2.0",
+    "cors": "^2.8.5",
     "express": "^4.16.3",
     "express-passport-logout": "^0.1.0",
     "express-session": "^1.17.1",
