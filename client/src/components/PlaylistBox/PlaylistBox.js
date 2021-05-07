@@ -1,5 +1,9 @@
 import React from "react";
 import "./PlaylistBox.css"
+import Container from 'react-bootstrap/Container'
+import Jumbotron from 'react-bootstrap/Jumbotron'
+import { Row } from "react-bootstrap";
+import Col from 'react-bootstrap/Col'
 
 const games = [
     {id:"Hollow Knight",played:false},
@@ -26,46 +30,46 @@ class PlaylistBox extends React.Component {
     render () {
         return (
             <div>
-            <div className="container">
-            <div class="row">
-                
-                <div class="jumbotron col-l-12 ">
-                    <div class="col-l-4 p-2">
-                        <div class="logo">
-                            <img class="logo"
-                                src="https://user-images.githubusercontent.com/74163812/116794268-b77be380-aa99-11eb-9b5c-c3298c088690.png"
-                                alt="highscore"/>
-                        </div>
-                    </div>
-
-                    <div class="col-l-8">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="container1">
-                                    <h2>Games to beat:</h2>
-                                    {games.map((game) => (
-                                    <ul>
-                                    <li>{game.id}</li>
-                                    </ul>
-                                    ))};
+            <Container fluid>
+                <Row className="justify-content-md-center mainBox" md={1}>
+                    <Jumbotron fluid>
+                        <Row>
+                            <Col md={3}>
+                                <div className="logo">
+                                    <img className="logo"
+                                        src="https://user-images.githubusercontent.com/74163812/116794268-b77be380-aa99-11eb-9b5c-c3298c088690.png"
+                                        alt="highscore"/>
                                 </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="container2">
-                                    <h2>Games in the Vault:</h2>
-                                    {games.map((game) => (
-                                    <ul>
-                                    <li>{game.id}</li>
-                                    </ul>
-                                    ))};
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-            </div> 
-        </div>
+                            </Col>
+                        
+                            <Col md={{ span: 6, offset: 1}}> 
+                                <Row>
+                                    <Col md={{ span: 3, offset: 1}}>
+                                    <div className="container1">
+                                        <h2>Games to beat:</h2>
+                                        {games.map((game) => (
+                                        <ul>
+                                        <li><p>{game.id}</p><button className="played" id={game.id}>Played</button></li>
+                                        </ul>
+                                        ))};
+                                    </div>
+                                    </Col>
+                                    <Col md={{ span: 3, offset: 4}}>
+                                    <div className="container2">
+                                        <h2>Games in the Vault:</h2>
+                                        {games.map((game) => (
+                                        <ul>
+                                        <li>{game.id}</li><button className="delete" id={game.id}>Delete</button>
+                                        </ul>
+                                        ))};
+                                    </div>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Jumbotron>
+                </Row> 
+            </Container>
       </div>
     );}
 } 
