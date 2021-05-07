@@ -1,4 +1,6 @@
 const db = require("../models");
+const API_KEY = process.env.REACT_APP_API_KEY;
+const axios = require('axios');
 
 // Defining methods for the usersController
 module.exports = {
@@ -24,42 +26,47 @@ module.exports = {
   },
 
   addGameToUser: function (gameData, userID) {
-    console.log("userID in addGametoUser", userID)
+    console.log("userID in addGametoUser", userID);
     return db.User.findOne({ _id: userID })
       .then((dbUser) => {
-        {dbUser.games.map((game) => game.id).includes(gameData.id) ? dbUser.save() : 
-        dbUser.games.push(gameData);
-        console.log("DB-USER =>", dbUser)
-        return dbUser.save();
-      }})
+        {
+          dbUser.games.map((game) => game.id).includes(gameData.id)
+            ? dbUser.save()
+            : dbUser.games.push(gameData);
+          console.log("DB-USER =>", dbUser);
+          return dbUser.save();
+        }
+      })
       .then((dbModel) => {
-        console.log("dbModel from addGametoUser", dbModel)
-        res.json(dbModel)
+        console.log("dbModel from addGametoUser", dbModel);
+        res.json(dbModel);
       })
       .catch((err) => res.status(422).json(err));
   },
 
   removeGameFromUser: function (gameData, userID) {
-    console.log("userID in addGametoUser", userID)
+    console.log("userID in addGametoUser", userID);
     return db.User.findOne({ _id: userID })
       .then((dbUser) => {
         let savedGames = dbUser.games.map((game) => game.id);
-        {!savedGames.includes(gameData.id) ? console.log("GAME NOT FOUND") :
-          dbUser.games.remove()
+        {
+          !savedGames.includes(gameData.id)
+            ? console.log("GAME NOT FOUND")
+            : dbUser.games.remove();
         }
-        console.log("DB-USER =>", dbUser)
+        console.log("DB-USER =>", dbUser);
         return dbUser.save();
       })
       .then((dbModel) => {
-        console.log("dbModel from addGametoUser", dbModel)
-        res.json(dbModel)
+        console.log("dbModel from addGametoUser", dbModel);
+        res.json(dbModel);
       })
       .catch((err) => res.status(422).json(err));
   },
 
-  // getConsoleGames: function(platform) {
-  //   axios.get(`https://api.rawg.io/api/games?key=5d1684169bcc4a8499314bf0b87bd008&language=eng&page_size=300&platforms=${platform}`)
-  //   .then((res) =>  
-  //   )}
-
-  };
+  getAllGames: function (req, res) {
+    axios.get(`https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100`)
+    .then((response) => res.json(response.data))
+    .catch(err => console.log(err));
+  },
+};

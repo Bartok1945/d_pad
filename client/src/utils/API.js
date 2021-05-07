@@ -1,5 +1,4 @@
-  
-import axios from "axios";
+  import axios from "axios";
 
 export default {
   // Adding new user credentials to DB
@@ -12,11 +11,10 @@ export default {
   },
 
   getConsoleGames: function(query) {
-    return axios.get(`https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100&platforms=${query}`)
+    return axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&language=eng&page_size=100&platforms=${query}`)
   },
-
   getAllGames: function() {
-    return axios.get(`https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100`)
+    return axios.get("/api/users/getAllGames")
   },
 
   addGame: function (gameData) {

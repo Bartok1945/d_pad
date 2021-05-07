@@ -11,19 +11,16 @@ const Swipes = () => {
   const [platform, setPlatform] = useState();
   const [currentGame, setCurrentGame] = useState();
 
-  // useEffect(() => {
-  //   API.getUser()
-  //     .then((res) => console.log("user data =>", res))
-  //     .catch((err) => console.log(err));
-  // });
-
   useEffect(() => {
     if (!platform) return;
     console.log("Platform inside useEffect", platform)
     if (platform === "All") {
       API.getAllGames()
-        .then((response) => setGames(response.data.results))
-        .then(() => setCurrentGame(games[0]))
+        .then((response) => {
+          setGames(response.data.results)
+          return response.data.results;
+        })
+        .then((gameResult) => setCurrentGame(gameResult[0]))
         .catch((err) =>
           console.log("The following error occurred getting games = ", err)
         );

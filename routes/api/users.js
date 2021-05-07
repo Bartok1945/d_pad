@@ -51,9 +51,7 @@ router.get("/auth", isLoggedIn, (req, res) => {
   });
 });
 
-router.get(`https://api.rawg.io/api/games?key=5d1684169bcc4a8499314bf0b87bd008&language=eng&page_size=300&platforms=${query}`, (req, res) => {
-  
-})
+router.get("/getAllGames", usersController.getAllGames)
 
 module.exports = router;
 
