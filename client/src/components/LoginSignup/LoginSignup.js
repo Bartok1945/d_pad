@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./LoginSignup.css";
 import API from '../../utils/API';
 import { useHistory } from "react-router-dom";
+import { useAlert } from 'react-alert'
 
 
 const LoginSignup = () => {
@@ -9,6 +10,8 @@ const LoginSignup = () => {
     email: "",
     password: "",
   });
+
+  const alert = useAlert()
 
   const onChange = (event) => {
     event.preventDefault();
@@ -22,8 +25,10 @@ const LoginSignup = () => {
   const handleSignup = (e) => {
     e.preventDefault();
     console.log("userData from handleSignup", userData);
-    if (!userData.email || !userData.password) {
-      return;
+    if (!userData.email) {
+      return alert.show("Please enter an email address")
+    } if (!userData.password) {
+      return alert.show("Please enter a password")
     }
     signUpUser(userData);
   };
@@ -40,6 +45,11 @@ let history = useHistory();
 
   const handleLogin = (e) => {
     e.preventDefault();
+    if (!userData.email) {
+      return alert.show("Please enter an email address")
+    } if (!userData.password) {
+      return alert.show("Please enter a password")
+    }
     console.log("USER DATA ==", userData)
     API.userLogin(userData)
       .then(console.log("USER HAS BEEN LOGGED IN!"))

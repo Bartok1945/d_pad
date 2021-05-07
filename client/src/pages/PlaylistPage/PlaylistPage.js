@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import Bar from "../../components/Bar/Bar";
 import PlaylistBox from "../../components/PlaylistBox/PlaylistBox";

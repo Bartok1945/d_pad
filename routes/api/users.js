@@ -6,7 +6,7 @@ const passport = require("../../passport");
 router.post("/signup", usersController.create);
 
 
-router.post("/login", passport.authenticate("local"), (req, res)  => {
+router.post("/login", isLoggedIn, passport.authenticate("local"), (req, res)  => {
     console.log("logged in - req.user", req.user);
     let userInfo = {
       email: req.user.email,
@@ -38,4 +38,37 @@ router.delete("/game", (req, res) => {
  }
 );
 
+router.get("/logout", (req, res) => {
+  req.session.destroy(function (err) {
+    res.redirect('/');
+  console.log("router.get logout route")
+})
+})
+
+router.get("/auth", isLoggedIn, (req, res) => {
+  res.status(200).json({
+      'message': "This is secured user routing"
+  });
+});
+
+router.get("/getAllGames", usersController.getAllGames)
+
+// router.get("/getConsoleGames/:id", (req, res) => {
+//   console.log("req.parsm.id ==", req.params)
+//   usersController.getConsoleGames(req.params)
+//   .then((res) => res.send(platformData))
+//   .catch((err) => console.log("ERROR IN remove /game API ROUTE =>", err))
+// })
+
+
 module.exports = router;
+
+function isLoggedIn(req, res, next) {
+  if (req.user) {
+    res.json({
+      email: req.user.email,
+    })
+  } else {
+    res.redirect("/");
+  }
+};
