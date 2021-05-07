@@ -1,24 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import Bar from "../../components/Bar/Bar";
 import PlaylistBox from "../../components/PlaylistBox/PlaylistBox";
-import API from "../../utils/API";
 
 const PlaylistPage = () => {
+  const games = [
+    { id: "Hollow Knight", played: false },
+    { id: "Borderlands", played: false },
+    { id: "Little Big Planet 2", played: false },
+  ];
 
-  useEffect(() => {
-    API.getUser()
-    .then((res) => console.log("get user res =>", res))
-    .catch((err) => console.log(err))
-  })
-
-    return (
-      <PageWrapper>
-        <Bar/>
-        <PlaylistBox/>
-      </PageWrapper>
-    );
-  }
-
+  return (
+    <PageWrapper>
+      <Bar />
+      <PlaylistBox id={games.id} played={games.played} />
+    </PageWrapper>
+  );
+};
 
 export default PlaylistPage;
