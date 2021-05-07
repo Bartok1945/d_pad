@@ -8,7 +8,7 @@ import "./Swipes.css";
 const Swipes = () => {
   const [games, setGames] = useState([]);
   const [gameIndex, setGameIndex] = useState(0);
-  const [platform, setPlatform] = useState();
+  const [platform, setPlatform] = useState({});
   const [currentGame, setCurrentGame] = useState();
 
   useEffect(() => {
@@ -25,6 +25,7 @@ const Swipes = () => {
           console.log("The following error occurred getting games = ", err)
         );
     } else {
+      console.log("Platform inside useEffect", platform)
       API.getConsoleGames(platform)
         .then((response) => {
           setGames(response.data.results)

@@ -6,7 +6,7 @@ const passport = require("../../passport");
 router.post("/signup", usersController.create);
 
 
-router.post("/login", passport.authenticate("local"), (req, res)  => {
+router.post("/login", isLoggedIn, passport.authenticate("local"), (req, res)  => {
     console.log("logged in - req.user", req.user);
     let userInfo = {
       email: req.user.email,
@@ -52,6 +52,14 @@ router.get("/auth", isLoggedIn, (req, res) => {
 });
 
 router.get("/getAllGames", usersController.getAllGames)
+
+// router.get("/getConsoleGames/:id", (req, res) => {
+//   console.log("req.parsm.id ==", req.params)
+//   usersController.getConsoleGames(req.params)
+//   .then((res) => res.send(platformData))
+//   .catch((err) => console.log("ERROR IN remove /game API ROUTE =>", err))
+// })
+
 
 module.exports = router;
 
