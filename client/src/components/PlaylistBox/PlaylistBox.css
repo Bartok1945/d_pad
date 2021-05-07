@@ -1,40 +1,41 @@
 .container1 {
-    background-color: #171b24;
-    color: white;
-    /* margin-top: 5%;
+  background-color: #171b24;
+  color: white;
+  /* margin-top: 5%;
     margin-left: 5%; */
-    border: .3vw;
-    border-color: #5eb090;
-    border-style: solid;
-    /* padding: 2%; */
-    width: 20vw;
-    height: 60vh;
-    overflow-y: scroll;
+  border: 0.3vw;
+  border-color: #5eb090;
+  border-style: solid;
+  /* padding: 2%; */
+  width: 20vw;
+  height: 60vh;
+  overflow-y: scroll;
 }
 
 .container2 {
-    background-color: #171b24;
-    color: white;
-    /* margin-top: 5%;
+  background-color: #171b24;
+  color: white;
+  /* margin-top: 5%;
     margin-left: 5%; */
-    border: .3vw;
-    border-color: #5eb090;
-    border-style: solid;
-    /* padding: 2%; */
-    width: 20vw;
-    height: 60vh;
-    overflow-y: scroll;
+  border: 0.3vw;
+  border-color: #5eb090;
+  border-style: solid;
+  /* padding: 2%; */
+  width: 20vw;
+  height: 60vh;
+  overflow-y: scroll;
 }
 
-.mainBox{
-    width: 80%;
-    margin: 0%;
-    padding: 0%;
+.mainBox {
+  width: 80%;
+  margin: 0%;
+  padding: 0%;
 }
 .logo {
-    height: 400px;
-    width: 400px;
+  height: 400px;
+  width: 400px;
 }
-.played{
-    margin-left: 10%;
+
+.played {
+  margin-left: 10%;
 }
