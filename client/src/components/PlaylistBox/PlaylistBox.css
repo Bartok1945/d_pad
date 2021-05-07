@@ -1,0 +1,31 @@
+.container1 {
+    background-color: #171b24;
+    color: white;
+    margin-top: -55vh;
+    margin-left: 30vw;
+    border: .3vw;
+    border-color: #5eb090;
+    border-style: solid;
+    padding: .5vw;
+    width: 20vw;
+    height: 60vh;
+}
+
+.container2 {
+    background-color: #171b24;
+    color: white;
+    margin-top: -55vh;
+    /* margin-right: 3vw; */
+    border: .3vw;
+    border-color: #5eb090;
+    border-style: solid;
+    /* padding: .5vw; */
+    margin-left: 15vw;
+    width: 20vw;
+    height: 60vh;
+}
+
+.mainJumbo{
+    width: 80%;
+
+}
