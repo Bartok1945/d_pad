@@ -42,7 +42,7 @@ module.exports = {
       .catch((err) => console.log("error in addGameToUser", err));
   },
 
-  removeGameFromUser: function (gameData, userID) {
+  deleteGameFromUser: function (gameData, userID) {
     console.log("userID in addGametoUser", userID);
     return db.User.findById({ _id: UserID })
       .then((dbUser) => {
@@ -74,5 +74,15 @@ module.exports = {
   //   .then(console.log("req.id ==", req.id))
   //   .then((response) => res.json(response.data))
   //   .catch(err => console.log(err));
+  // },
+
+    // getUserGames: function (userID, res) {
+  //   console.log('userID ingetUserGames controller', userID)
+  //   return ( 
+  //     db.User.findOne({ _id: userID })
+  //     .then((dbUser) => console.log("dbModel", dbUser))
+  //     .then((dbUser) => res.json(dbUser.games))
+  //     .catch((err) => res.status(422).json(err))
+  //   )
   // },
 };

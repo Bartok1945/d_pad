@@ -45,10 +45,8 @@ router.get("/logout", (req, res) => {
 })
 })
 
-router.get("/auth", isLoggedIn, (req, res) => {
-  res.status(200).json({
-      'message': "This is secured user routing"
-  });
+router.get("/auth", (req, res) => {
+  res.send(req.user.id)
 });
 
 router.get("/getAllGames", usersController.getAllGames)
@@ -57,6 +55,12 @@ router.get("/getAllGames", usersController.getAllGames)
 //   console.log("req.parsm.id ==", req.params)
 //   usersController.getConsoleGames(req.params)
 //   .then((res) => res.send(platformData))
+//   .catch((err) => console.log("ERROR IN remove /game API ROUTE =>", err))
+// })
+
+// router.get("/:id", (req, res) => {
+//   usersController.getUserGames(req.params.id)
+//   .then((response) => res.send(response.data))
 //   .catch((err) => console.log("ERROR IN remove /game API ROUTE =>", err))
 // })
 

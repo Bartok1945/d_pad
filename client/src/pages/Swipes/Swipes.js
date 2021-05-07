@@ -41,17 +41,11 @@ const Swipes = () => {
     }
   }, [platform]);
 
-  const removeGame = (game) => {
-    let gameData = {
-      id: game.id,
-      title: game.name,
-    };
-    API.removeGame(gameData)
-      .then(() => console.log("gameData", gameData))
-      .catch((err) =>
-        console.log("The following error occurred adding games = ", err)
-      );
-  };
+  useEffect(() => {
+    API.getUser()
+    .then((response) => console.log("GET USER RESPONE", response.data))
+    .catch((err) => console.log(err)) 
+  })
 
   const addGame = (game) => {
     let gameData = {
@@ -74,12 +68,13 @@ const Swipes = () => {
   };
 
   let nextGame = () => {
+    console.log("INSIDE nextGame")
     if (gameIndex !== games.length) {
       setGameIndex(gameIndex + 1);
       console.log("gameIndex inside nextGame", gameIndex);
       console.log("GAME INDEX =>", gameIndex);
     } else {
-      console.log("No more games to choose!");
+      console.log("All outta games!");
     }
     setCurrentGame(games[gameIndex]);
   };
@@ -120,7 +115,7 @@ const Swipes = () => {
       ) : (
         <GameCard
           id={currentGame.id}
-          removeGame={() => removeGame(currentGame)}
+          nextGame={() => nextGame()}
           addGame={() => addGame(currentGame)}
           key={currentGame.id}
           name={currentGame.name}

@@ -9,7 +9,7 @@ function GameCard(props) {
           <div className="controller-left left col-l-2 col-m-2 col-s-2">
               <div className="button-minus"></div>
               <div
-                onClick={() => props.removeGame(props.id)}
+                onClick={() => props.nextGame()}
                 className="remove"
                 id="controller-joystick"
               >

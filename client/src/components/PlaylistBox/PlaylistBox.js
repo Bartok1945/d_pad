@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import { Row } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
+import API from "../../utils/API";
 
 const PlaylistBox = () => {
   const games = [
@@ -15,6 +16,18 @@ const PlaylistBox = () => {
     { id: "Mario Party 2", played: true },
     { id: "The Lion King", played: true },
   ];
+
+  const deleteGame = (game) => {
+    let gameData = {
+      id: game.id,
+      title: game.name,
+    };
+    API.deleteGame(gameData)
+      .then(() => console.log("gameData", gameData))
+      .catch((err) =>
+        console.log("The following error occurred adding games = ", err)
+      );
+  };
 
   return (
     <div>

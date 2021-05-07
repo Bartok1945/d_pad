@@ -37,5 +37,9 @@ export default {
 
   getUser: function () {
     return axios.get("/api/users/auth/");
-  }
+  },
+
+  // getUserGames: function(id) {
+  //   return axios.get("/api/users/" + id);
+  // }
 };
