@@ -6,7 +6,7 @@ import RightSwitch from "../../components/GameCard/RightSwitch.png";
 function GameCard(props) {
   return (
     <div className="container">
-      <div className="switch">
+      <div className="switch justify-content-md-center">
         <div className="controller">
           <div className="controller-left left col-l-2 col-m-2 col-s-2">
             <img src={LeftSwitch} className="left-cont" alt="left" />
