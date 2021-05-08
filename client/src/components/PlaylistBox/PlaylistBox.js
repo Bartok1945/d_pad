@@ -7,14 +7,14 @@ import Col from "react-bootstrap/Col";
 import API from "../../utils/API";
 
 const PlaylistBox = () => {
-  const [userGames, setUserGames] = useState([])
-  const [userData, setUserData] = useState({})
+  const [userGames, setUserGames] = useState([]);
+  const [userData, setUserData] = useState({});
   // const [beatenGames, setBeatenGames] = useState([])
 
   useEffect(() => {
     API.getUser()
       .then((response) => {
-        setUserData(response)
+        setUserData(response);
       })
       .then(() => console.log("userData from PlaylistBox", userData))
       .then(getUserGames())
@@ -23,23 +23,33 @@ const PlaylistBox = () => {
 
   useEffect(() => {
     API.getUserGames(userData.data)
-    .then((response) => console.log(response.data))
-    .catch((err) => console.log(err))
-  }, [userGames])
+      .then((response) => console.log(response.data))
+      .catch((err) => console.log(err));
+  }, [userGames]);
 
   const getUserGames = () => {
     API.getUserGames(userData.data)
-    .then((response) => setUserGames(response.data.games))
-    .catch((err) => console.log(err))
+      .then((response) => setUserGames(response.data.games))
+      .catch((err) => console.log(err));
   };
 
   const deleteUserGame = (game) => {
-    console.log("GAME DATA IN deleteUSerGame", JSON.stringify(game.id))
+    console.log("GAME DATA IN deleteUSerGame", JSON.stringify(game.id));
     API.deleteUserGame(JSON.stringify(game.id))
       .then((response) => setUserGames(response.data.games))
       .catch((err) =>
         console.log("The following error occurred adding games = ", err)
       );
+  };
+
+  const updateGame = (game) => {
+    console.log("GAME DATA IN deleteUSerGame", JSON.stringify(game.id));
+    API.updateGame(JSON.stringify(game.id))
+      .then((response) => console.log("response from updateGame", response))
+      .catch((err) =>
+        console.log("The following error occurred updateGame = ", err)
+      );
+    getUserGames();
   };
 
   return (
@@ -63,27 +73,43 @@ const PlaylistBox = () => {
                   <Col md={{ span: 3, offset: 1 }}>
                     <div className="container1">
                       <h2>Games to beat:</h2>
-                      {/* {!userGames ? null : userGames.map((game) => (
-                        <ul>
-                          <li>{game.title}</li>
-                          <button className="delete" id={game.id}>
-                            Played
-                          </button>
-                        </ul>
-                      ))} */}
+                      {!userGames
+                        ? null
+                        : userGames
+                            .filter((game) => game.played === false)
+                            .map((game) => (
+                              <ul key={game.index}>
+                                <li>{game.title}</li>
+                                <button
+                                  className="delete"
+                                  id={game.id}
+                                  onClick={() => updateGame(game)}
+                                >
+                                  Played
+                                </button>
+                              </ul>
+                            ))}
                     </div>
                   </Col>
                   <Col md={{ span: 3, offset: 4 }}>
                     <div className="container2">
                       <h2>Games Beaten:</h2>
-                      {!userGames ? null : userGames.map((game) => (
-                        <ul>
-                          <li>{game.title}</li>
-                          <button className="delete" id={game.id} onClick={() => deleteUserGame(game)}>
-                            Delete
-                          </button>
-                        </ul>
-                      ))}
+                      {!userGames
+                        ? null
+                        : userGames
+                            .filter((game) => game.played === true)
+                            .map((game) => (
+                              <ul key={game.index}>
+                                <li>{game.title}</li>
+                                <button
+                                  className="delete"
+                                  id={game.id}
+                                  onClick={() => deleteUserGame(game)}
+                                >
+                                  updateGame
+                                </button>
+                              </ul>
+                            ))}
                     </div>
                   </Col>
                 </Row>
@@ -93,7 +119,7 @@ const PlaylistBox = () => {
         </Row>
       </Container>
     </div>
-  )
+  );
 };
 
 export default PlaylistBox;
