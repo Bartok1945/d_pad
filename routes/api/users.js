@@ -37,6 +37,17 @@ router.delete("/game/:id", (req, res) => {
  }
 );
 
+router.put("/game/:id", (req, res) => {
+  let gameData = {
+    id: req.params.id,
+  };
+  console.log("GAME DATA in router.delete ==>", req.params.id)
+  usersController.updateGame(gameData, req.user.id)
+  .then((response) => res.send(response))
+  .catch((err) => console.log("ERROR IN add /game API ROUTE =>", err))
+ }
+);
+
 router.get("/logout", (req, res) => {
   console.log("router.get logout route")
   req.logout();

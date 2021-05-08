@@ -46,6 +46,42 @@ module.exports = {
     );
   },
 
+  updateGame: function (gameID, userID) {
+    console.log("userID in updateGame", userID);
+    console.log("gameData in updateGame", gameID);
+
+    return db.User.findOne({ _id: userID })
+      .then((dbUser) => {
+        let savedGames = dbUser.games.map((game) => game.id);
+        console.log("SAVEDGAMES ARRAY ", savedGames)
+        if(savedGames.includes(parseInt(gameID.id))) {
+          console.log("DB.user inside updateGame", dbUser)
+          dbUser.games = dbUser.games.map(game =>  {
+            if(parseInt(gameID.id) === game.id) {
+              game.played = true
+            } 
+            return game;
+            });
+  
+          console.log(`dbUSer.games`, dbUser.games)
+          return dbUser.save();
+        } else {
+            console.log("THERE WAS AN ERROR TRYING TO REMOVE A GAME FORM THE USER ")
+        }
+        console.log("DB-USER =>", dbUser);
+      })
+      .catch((err) => console.log("error in deleteGameFromUser", err))
+    },
+
+  getAllGames: function (req, res) {
+    axios
+      .get(
+        `https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100`
+      )
+      .then((response) => res.json(response.data))
+      .catch((err) => console.log(err));
+  },
+
   deleteGameFromUser: function (gameID, userID) {
     console.log("userID in REMOVEGametoUser", userID);
     console.log("gameData in REMOVEGametoUser", gameID);

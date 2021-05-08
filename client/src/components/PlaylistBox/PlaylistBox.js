@@ -33,14 +33,23 @@ const PlaylistBox = () => {
     .catch((err) => console.log(err))
   };
 
-  const deleteUserGame = (game) => {
+  // const deleteUserGame = (game) => {
+  //   console.log("GAME DATA IN deleteUSerGame", JSON.stringify(game.id))
+  //   API.deleteUserGame(JSON.stringify(game.id))
+  //     .then((response) => setUserGames(response.data.games))
+  //     .catch((err) =>
+  //       console.log("The following error occurred adding games = ", err)
+  //     );
+  // };
+
+  const updateGame = (game) => {
     console.log("GAME DATA IN deleteUSerGame", JSON.stringify(game.id))
-    API.deleteUserGame(JSON.stringify(game.id))
-      .then((response) => setUserGames(response.data.games))
-      .catch((err) =>
-        console.log("The following error occurred adding games = ", err)
-      );
-  };
+    API.updateGame(JSON.stringify(game.id))
+    .then((response) => console.log("response from updateGame", response))
+    .catch((err) =>
+    console.log("The following error occurred updateGame = ", err)
+  );
+  }
 
   return (
     <div>
@@ -79,8 +88,8 @@ const PlaylistBox = () => {
                       {!userGames ? null : userGames.map((game) => (
                         <ul>
                           <li>{game.title}</li>
-                          <button className="delete" id={game.id} onClick={() => deleteUserGame(game)}>
-                            Delete
+                          <button className="delete" id={game.id} onClick={() => updateGame(game)}>
+                            updateGame
                           </button>
                         </ul>
                       ))}

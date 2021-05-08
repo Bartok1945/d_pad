@@ -27,6 +27,11 @@ export default {
     return axios.post("/api/users/game/", gameData);
   },
 
+  updateGame: function (gameID) {
+    console.log('gameID inside updateGame API route', gameID)
+    return axios.put("/api/users/game/" + gameID);
+  },
+
   deleteUserGame: function (gameID) {
     console.log('gameID inside API route', gameID)
     return axios.delete("/api/users/game/" + gameID);
