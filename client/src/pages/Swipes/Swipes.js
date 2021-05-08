@@ -4,11 +4,12 @@ import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import Bar from "../../components/Bar/Bar";
 import API from "../../utils/API";
 import './Swipes.css';
+import { raw } from "body-parser";
+import { STATES } from "mongoose";
 
 const Swipes = () => {
   const [games, setGames] = useState([]);
   const [platform, setPlatform] = useState();
-
   useEffect(() => {
     {
       platform === "All"
@@ -72,15 +73,17 @@ const Swipes = () => {
   const gameDescription = (gameID) => { 
     console.log("Game ID ", gameID)
 
-     let rawGameDescription ;
- 
-    API.getGameDescription(gameID)
+     let rawGameDescription;
+
+   API.getGameDescription(gameID)
     
-    .then((res) =>rawGameDescription = (res.data.description_raw))
+    .then((res) => rawGameDescription = (res.data.description_raw))
     .catch((err) => console.log("ERROR FROM getGameDescription", err))
-   return gameID
-    
+    console.log(rawGameDescription)
+
+return rawGameDescription
   }
+  
   return (
     <PageWrapper>
       <Bar />
@@ -113,6 +116,7 @@ const Swipes = () => {
       </form>
       </div>
       {games.map((game) => (
+        
         <GameCard
           id={game.id}
           removeGame={() => removeGame(game)}
@@ -124,9 +128,10 @@ const Swipes = () => {
           rating={game.rating}
           released={game.released}
           description={gameDescription(game.id)}
-        />
+                  />
       ))
       }
+      
     </PageWrapper>
   );
 };
