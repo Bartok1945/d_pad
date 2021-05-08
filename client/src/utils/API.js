@@ -28,6 +28,7 @@ export default {
   },
 
   deleteUserGame: function (gameID) {
+    console.log('gameID inside API route', gameID)
     return axios.delete("/api/users/game/" + gameID);
   },
 
@@ -40,6 +41,7 @@ export default {
   },
 
   getUserGames: function(id) {
+    console.log("ID inside getUserGames API route", id)
     return axios.get("/api/users/" + id);
   }
 };

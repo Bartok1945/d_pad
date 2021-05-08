@@ -36,6 +36,8 @@ module.exports = {
             return dbUser.save();
           }
         })
+        .then((response) => res.json(response.data))
+
         // .then((dbModel, res) => {
         //   console.log("dbModel from addGametoUser", dbModel);
         //   res.send(dbModel);
@@ -44,27 +46,25 @@ module.exports = {
     );
   },
 
-  deleteGameFromUser: function (gameData, userID) {
-    console.log("userID in addGametoUser", userID);
-    console.log("gameData in addGametoUser", gameData);
+  deleteGameFromUser: function (gameID, userID) {
+    console.log("userID in REMOVEGametoUser", userID);
+    console.log("gameData in REMOVEGametoUser", gameID);
 
-    return db.User.findById({ _id: userID })
+    return db.User.findOne({ _id: userID })
       .then((dbUser) => {
         let savedGames = dbUser.games.map((game) => game.id);
-        if(savedGames.includes(gameData.id)) {
-          dbUser.games.remove();
+        console.log("SAVEDGAMES ARRAY ", savedGames)
+        if(savedGames.includes(parseInt(gameID.id))) {
+          dbUser.games = dbUser.games.filter(game => game.id !== parseInt(gameID.id));
+          console.log(`dbUSer.games`, dbUser.games)
+          return dbUser.save();
         } else {
             console.log("THERE WAS AN ERROR TRYING TO REMOVE A GAME FORM THE USER ")
         }
         console.log("DB-USER =>", dbUser);
-        return dbUser.save();
       })
-      .then((dbModel) => {
-        console.log("dbModel from addGametoUser", dbModel);
-        res.send(dbModel);
-      })
-      .catch((err) => res.status(422).json(err));
-  },
+      .catch((err) => console.log("error in deleteGameFromUser", err))
+    },
 
   getAllGames: function (req, res) {
     axios

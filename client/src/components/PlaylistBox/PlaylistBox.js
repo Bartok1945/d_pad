@@ -45,9 +45,9 @@ const PlaylistBox = () => {
   };
 
   const deleteUserGame = (game) => {
-    console.log("GAME DATA IN deleteUSerGame", game.id)
-    API.deleteUserGame(game.id)
-      .then(() => console.log("gameData", game))
+    console.log("GAME DATA IN deleteUSerGame", JSON.stringify(game.id))
+    API.deleteUserGame(JSON.stringify(game.id))
+      .then((response) => setUserGames(response.data.games))
       .catch((err) =>
         console.log("The following error occurred adding games = ", err)
       );
@@ -74,14 +74,14 @@ const PlaylistBox = () => {
                   <Col md={{ span: 3, offset: 1 }}>
                     <div className="container1">
                       <h2>Games to beat:</h2>
-                      {!userGames ? null : userGames.map((game) => (
+                      {/* {!userGames ? null : userGames.map((game) => (
                         <ul>
                           <li>{game.title}</li>
                           <button className="delete" id={game.id}>
                             Played
                           </button>
                         </ul>
-                      ))}
+                      ))} */}
                     </div>
                   </Col>
                   <Col md={{ span: 3, offset: 4 }}>

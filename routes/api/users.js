@@ -28,9 +28,12 @@ router.post("/game", (req, res) => {
 
 router.delete("/game/:id", (req, res) => {
   let gameData = {
-    id: req.body.id,
+    id: req.params.id,
   };
+  console.log("GAME DATA in router.delete ==>", req.params.id)
   usersController.deleteGameFromUser(gameData, req.user.id)
+  .then((response) => res.send(response))
+  .catch((err) => console.log("ERROR IN add /game API ROUTE =>", err))
  }
 );
 
@@ -54,7 +57,7 @@ router.get("/getAllGames", usersController.getAllGames)
 // })
 
 router.get("/:id", (req, res) => {
-  console.log("REQ>USER INSIDE ROUTER", req.user)
+  // console.log("REQ>USER INSIDE ROUTER", req.user)
   usersController.getUserGames(req.user.id, res)
 })
 
