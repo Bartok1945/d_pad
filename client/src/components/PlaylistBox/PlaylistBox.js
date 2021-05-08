@@ -45,7 +45,7 @@ const PlaylistBox = () => {
   const updateGame = (game) => {
     console.log("GAME DATA IN deleteUSerGame", JSON.stringify(game.id))
     API.updateGame(JSON.stringify(game.id))
-    .then((response) => console.log("response from updateGame", response))
+    .then((response) => setUserGames(response.data.games))
     .catch((err) =>
     console.log("The following error occurred updateGame = ", err)
   );
@@ -89,7 +89,7 @@ const PlaylistBox = () => {
                         <ul key={game.index}>
                         <li>{game.title}</li>
                           <button className="delete" id={game.id} onClick={() => deleteUserGame(game)}>
-                            updateGame
+                            Delete
                           </button>
                         </ul>
                       ))}
