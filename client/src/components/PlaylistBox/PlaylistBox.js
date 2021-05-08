@@ -7,20 +7,9 @@ import Col from "react-bootstrap/Col";
 import API from "../../utils/API";
 
 const PlaylistBox = () => {
-  // const games = [
-  //   { id: "Hollow Knight", played: false },
-  //   { id: "Borderlands", played: false },
-  //   { id: "Little Big Planet 2", played: false },
-  //   { id: "Crash Bandicoot", played: true },
-  //   { id: "Spyro", played: true },
-  //   { id: "Mario Party 2", played: true },
-  //   { id: "The Lion King", played: true },
-  // ];
-
   const [userGames, setUserGames] = useState([])
   const [userData, setUserData] = useState({})
   // const [beatenGames, setBeatenGames] = useState([])
-
 
   useEffect(() => {
     API.getUser()
