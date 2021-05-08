@@ -1,32 +1,24 @@
 import React from "react";
 import "./GameCard.css";
+import LeftSwitch from "../../components/GameCard/LeftSwitch.png";
+import RightSwitch from "../../components/GameCard/RightSwitch.png";
 
 function GameCard(props) {
   return (
-    <div className="container mainContainer m-5">
-      <div className="switch d-flex justify-self-center">
+    <div className="container">
+      <div className="switch">
         <div className="controller">
           <div className="controller-left left col-l-2 col-m-2 col-s-2">
-              <div className="button-minus"></div>
-              <div
-                onClick={() => props.nextGame()}
-                className="remove"
-                id="controller-joystick"
-              >
-              <div className="downBtn p-3 m-2"><i className ="fas fa-thumbs-down fa-3x"/></div>
-              </div>
-                <div className="button-top button-top-right">
-                <div className="buttonsDivL justify-container-center m-5">
-                  <div className="button"></div>
-                  <div className="button"></div>
-                  <div className="button"></div>
-                  <div className="button"></div>
-                </div>
-                <button className="button-home"/>
-              </div>
+            <img src={LeftSwitch} className="left-cont" alt="left" />
+            <div
+              onClick={() => props.nextGame()}
+              className="buttonRed"
+              id="controller-joystick"
+            >
+              <i className="fas fa-thumbs-down"></i>
+            </div>
           </div>
-
-          <div className="jumbotron gameInfo col-l-8 col-m-8 col-s-8">
+          <div className="jumbotron col-l-8 col-m-8 col-s-8">
             <div className="container-text">
               <div className="jumbotron-body">
                 <div className="card">
@@ -40,19 +32,24 @@ function GameCard(props) {
                   <div className="content">
                     <ul>
                       <li>
-                        <strong className="title">Title:</strong> {props.name}
+                        <strong className="tealColor">Title:</strong>{" "}
+                        {props.name}
                       </li>
                       <li>
-                        <strong>Platform(s):</strong> {props.platforms}
+                        <strong className="tealColor">Platform(s):</strong>{" "}
+                        {props.platforms}
                       </li>
                       <li>
-                        <strong>Rating:</strong> {props.rating}
+                        <strong className="tealColor">Rating:</strong>{" "}
+                        {props.rating}
                       </li>
                       <li>
-                        <strong>Release Date:</strong> {props.released}
+                        <strong className="tealColor">Release Date:</strong>{" "}
+                        {props.released}
                       </li>
                       <li>
-                        <strong>Description:</strong> {props.description}
+                        <strong className="tealColor">Description:</strong>{" "}
+                        {props.description}
                       </li>
                     </ul>
                   </div>
@@ -60,26 +57,18 @@ function GameCard(props) {
               </div>
             </div>
           </div>
-      
           <div className="controller-right col-l-2 col-m-2 col-s-2">
-            <div className="button-plus"></div>
+            <img src={RightSwitch} className="right-cont" alt="right" />
+            <div className="buttonGreen">
               <div
                 onClick={() => props.addGame(props.id)}
                 className="add"
                 id="controller-joystick"
               >
-              <div className="upBtn"><i className ="fas fa-thumbs-up fa-3x"/></div>
+                <i className="fas fa-thumbs-up"></i>
+              </div>
             </div>
-            <div className="button-top button-top-right"></div>
-            <div className="buttonsDivR justify-container-center m-5">
-              <div className="button"></div>
-              <div className="button"></div>
-              <div className="button"></div>
-              <div className="button"></div>
-            </div>
-            <div className="button button-capture"></div>
           </div>
-        
         </div>
       </div>
     </div>

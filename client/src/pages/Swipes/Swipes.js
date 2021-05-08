@@ -115,7 +115,7 @@ const Swipes = () => {
       ) : (
         <GameCard
           id={currentGame.id}
-          nextGame={() => nextGame()}
+          nextGame={nextGame}
           addGame={() => addGame(currentGame)}
           key={currentGame.id}
           name={currentGame.name}
