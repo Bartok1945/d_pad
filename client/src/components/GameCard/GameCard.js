@@ -18,8 +18,6 @@ function GameCard(props) {
               <i className="fas fa-thumbs-down"></i>
             </div>
           </div>
-          {/* </div> */}
-
           <div className="jumbotron col-l-8 col-m-8 col-s-8">
             <div className="container-text">
               <div className="jumbotron-body">
@@ -34,19 +32,24 @@ function GameCard(props) {
                   <div className="content">
                     <ul>
                       <li>
-                        <strong className="tealColor">Title:</strong> {props.name}
+                        <strong className="tealColor">Title:</strong>{" "}
+                        {props.name}
                       </li>
                       <li>
-                        <strong className="tealColor">Platform(s):</strong> {props.platforms}
+                        <strong className="tealColor">Platform(s):</strong>{" "}
+                        {props.platforms}
                       </li>
                       <li>
-                        <strong className="tealColor">Rating:</strong> {props.rating}
+                        <strong className="tealColor">Rating:</strong>{" "}
+                        {props.rating}
                       </li>
                       <li>
-                        <strong className="tealColor">Release Date:</strong> {props.released}
+                        <strong className="tealColor">Release Date:</strong>{" "}
+                        {props.released}
                       </li>
                       <li>
-                        <strong className="tealColor">Description:</strong> {props.description}
+                        <strong className="tealColor">Description:</strong>{" "}
+                        {props.description}
                       </li>
                     </ul>
                   </div>

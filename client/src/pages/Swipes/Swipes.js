@@ -12,26 +12,40 @@ const Swipes = () => {
   const [currentGame, setCurrentGame] = useState();
 
   useEffect(() => {
+    API.getUser()
+      .then((response) => console.log("GET USER RESPONE", response.data))
+      .catch((err) => console.log("err from useEffect in swipes.js", err));
+  });
+
+  useEffect(() => {
     if (!platform) return;
-    console.log("Platform inside useEffect", platform)
+    console.log("Platform inside useEffect", platform);
     if (platform === "All") {
       API.getAllGames()
         .then((response) => {
-          setGames(response.data.results)
+          setGames(response.data.results);
           return response.data.results;
         })
-        .then((gameResult) => setCurrentGame(gameResult[0]))
+        .then((gameResult) =>
+          setCurrentGame(
+            gameResult[Math.floor(Math.random() * gameResult.length)]
+          )
+        )
         .catch((err) =>
           console.log("The following error occurred getting games = ", err)
         );
     } else {
-      console.log("Platform inside useEffect", platform)
+      console.log("Platform inside useEffect", platform);
       API.getConsoleGames(platform)
         .then((response) => {
-          setGames(response.data.results)
+          setGames(response.data.results);
           return response.data.results;
         })
-        .then((gameResult) => setCurrentGame(gameResult[0]))
+        .then((gameResult) =>
+          setCurrentGame(
+            gameResult[Math.floor(Math.random() * gameResult.length)]
+          )
+        )
         .then(() =>
           console.log("games state when selecting ANYTHING ELSE", games)
         )
@@ -40,18 +54,6 @@ const Swipes = () => {
         );
     }
   }, [platform]);
-
-  const removeGame = (game) => {
-    let gameData = {
-      id: game.id,
-      title: game.name,
-    };
-    API.removeGame(gameData)
-      .then(() => console.log("gameData", gameData))
-      .catch((err) =>
-        console.log("The following error occurred adding games = ", err)
-      );
-  };
 
   const addGame = (game) => {
     let gameData = {
@@ -74,12 +76,13 @@ const Swipes = () => {
   };
 
   let nextGame = () => {
+    console.log("INSIDE nextGame");
     if (gameIndex !== games.length) {
       setGameIndex(gameIndex + 1);
       console.log("gameIndex inside nextGame", gameIndex);
       console.log("GAME INDEX =>", gameIndex);
     } else {
-      console.log("No more games to choose!");
+      console.log("All outta games!");
     }
     setCurrentGame(games[gameIndex]);
   };
