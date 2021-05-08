@@ -6,12 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url("https://user-images.githubusercontent.com/74163812/115267775-8ef20200-a107-11eb-876b-3922553cd448.png");
-  background-size: 100% ;
+  background-size: cover;
   background-color: #f4b324;
   font-family: 'Iceland', cursive;
   font-size: 20px;
   background-repeat: no-repeat;
-
 }
 
 

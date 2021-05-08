@@ -1,0 +1,236 @@
+.switch {
+  position: fixed;
+/*  the code below centers the switch but messes up something on the backend */
+  /* margin-left: 10%;
+  margin-right: 10%; */
+}
+
+.gameInfo {
+  position: relative;
+  width: 70%;
+  display: inline-block;
+  height: 100%;
+  padding: 0%;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align:justify;
+}
+.card {
+  flex-basis: auto;
+  text-align: center;
+  overflow: auto;
+  background-color: hsl(0, 0%, 20%);
+  width: 100%;
+  font-family: "Iceland", cursive;
+  flex-basis: auto;
+  text-align: center;
+  overflow: auto;
+  border-color: #242329;
+} 
+.card > .img-container {
+  height: 60%;
+  overflow: hidden;
+  text-align: center;
+  background-color: #242329;
+  margin: 0%;
+}
+.title{
+  color: #6dc4ca;
+}
+.card > .img-container > img {
+  background-color: #242329;
+  width: 100%;
+}
+.content{
+  padding-top: 2%;
+  background-color: #242329;
+  color: aliceblue;
+  text-align: center;
+  font-size: 30px;
+}
+.buttonsDivL,
+.buttons {
+  z-index: 1;
+  width: 140px;
+  height: 140px;
+  position: absolute;
+  bottom: 20%;
+  transform: rotate(45deg);
+}
+
+.buttonsDivR,
+.buttons {
+  z-index: 1;
+  width: 140px;
+  height: 140px;
+  top: 10%;
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+.controller {
+  position: absolute;
+  display: flex;
+  height: 60vh;
+  width: 80vw;
+  top: 50%;
+  border-radius: 45rem;
+}
+
+.controller-left {
+  background-color: #00bbe3;
+  width: 15%;
+  height: 100%;
+  z-index: 0;
+  display: inline-block;
+  border: 16px solid rgba(0, 0, 0, 0.2);
+  border-right: none;
+  border-radius: 96px 0 0 96px;
+}
+
+.controller-right {
+  background-color: #ff5d4c;
+  width: 15%;
+  height: 100%;
+  z-index: 0;
+  display: inline-block;
+  border: 16px solid rgba(0, 0, 0, 0.2);
+  border-left: none;
+  border-radius: 0 96px 96px 0;
+}
+
+.controller #controller-joystick {
+  top: 25%;
+  z-index: 10;
+  border: 0.5rem solid black;
+  border-radius: 50%;
+}
+
+.controller-left #controller-joystick {
+  z-index: 10;
+  width: 50%;
+  height: 15%;
+  background-color: #e42929;
+  margin-top: 65%;
+  margin-left: 30%;
+}
+
+.controller-right #controller-joystick {
+  width: 50%;
+  height: 15%;
+  background-color: #06b120;
+  z-index: 4;
+  margin-top: 150%;
+  margin-left: 20%;
+}
+
+.downBtn,.fa-thumbs-down {
+  padding-top: 10%;
+  text-align: center;
+}
+
+.upBtn, .fa-thumbs-up  {
+  padding-top: 10%;
+  text-align: center;
+}
+
+.button {
+  background-color: black;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  margin: 8px;
+}
+
+
+.button-plus {
+  margin-top: 6%;
+  margin-left: 6%;
+  z-index: 2;
+  width: 2vw;
+  height: 1vh;
+  border-radius: 1rem;
+  background-color: black;
+  top: 15vh;
+}
+.button-plus::before {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  transform: rotate(90deg);
+  background-color: inherit;
+  z-index: 2;
+}
+
+.button-minus{
+  margin-top: 6%;
+  margin-left: 70%;
+  padding-right: 10%;
+  z-index: 2;
+  width: 2vw;
+  height: 1vh;
+  border-radius: 1rem;
+  background-color: black;
+  top: 20vh;
+}
+
+.button-home {
+  position: fixed;
+  display: inline-block;
+  border-radius: 25%;
+  background-color: black;
+  width: 45px;
+  height: 45px;
+  z-index: 2;
+  margin-top: 13%;
+  margin-left: 7%;
+}
+
+
+.button-capture{
+  position: fixed;
+  display: inline-block;
+  background-color: black;
+  width: 45px;
+  height: 45px;
+  z-index: 2;
+  margin-top: 3%;
+  margin-left: 5%; 
+}
+
+.button-top-right{
+
+  padding: 0%;
+  margin: 0%;
+}
+
+ul {
+  list-style: none; 
+  margin: 2em; 
+  padding: 0;
+}
+  
+li {
+  margin: 0; 
+  position: relative;
+}
+    
+li::after {
+  content: '';
+  height: .4em;
+  width: .4em;
+  background: rgb(254, 254, 254);
+  display: block;
+  position: absolute;
+  transform: rotate(45deg);
+  top: .25em;
+  left: 0;
+}
+    
+
+  
