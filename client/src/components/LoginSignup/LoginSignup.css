@@ -1,3 +1,7 @@
+@media screen 
+  and (min-device-width: 1000px)  
+  and (-webkit-min-device-pixel-ratio: 2){ 
+
 .jumbotron2 {
   height: auto;
   width: 85%;
@@ -44,4 +48,64 @@
 
 .userBox{
     padding:2%;
+}
+
+  }
+
+@media screen 
+  and (min-device-width: 1700px)  
+  and (-webkit-min-device-pixel-ratio: 2){ 
+
+    .jumbotron2 {
+      height: auto;
+      width: 85%;
+      padding-top: 0%;
+      padding-left: -5%;
+      padding-right: 3%;
+      padding-bottom: 3%;
+      background-color: #242329;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 3%;
+      margin-bottom: 10%;
+      font-family: "Iceland", cursive;
+      border-style: solid;
+      border-width: .3rem;
+      border-color: #f4b324;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .track {
+      height: 30vh;
+      width: 15vw;
+      margin-left: -1.5vw;
+    }
+
+    .signupIMG {
+     margin-left: -1vw;
+      height: 11vh;
+      width: 20vw;
+    }
+    
+    .loginIMG {
+     margin-left:-15%;
+     margin-right: auto;
+      height: 9vh;
+      width: 20vw;
+    }
+    
+    .login{
+      margin-top: .6vh;
+      margin-left: auto;
+     margin-right: auto;
+    }
+    
+    .userBox{
+      margin-left: auto;
+     margin-right: auto;
+        padding:0%;
+    }
+
 }
