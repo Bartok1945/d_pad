@@ -4,7 +4,6 @@ const LocalStrategy = require("passport-local").Strategy;
 const strategy = new LocalStrategy(
   {
     usernameField: "email", // not necessary, DEFAULT
-    // passwordField: 'password',
   },
   function (email, password, done) {
     console.log("Local Strategy running!")
@@ -17,6 +16,7 @@ const strategy = new LocalStrategy(
         console.log("NO USER FOUND AND I AM A LIAR")
         return done(null, false, { message: "Incorrect email" });
       }
+      // the checkPassword function always returned 401 regardless, so disabled
       // if (!user.checkPassword(password)) {
       //   console.log("NO PASSWORD FOUND AND I AM A LIAR ==", password)
       //   return done(null, false, { message: "Incorrect password" });

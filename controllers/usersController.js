@@ -25,20 +25,18 @@ module.exports = {
 
   addGameToUser: function (gameData, userID) {
     // console.log("userID in addGametoUser", userID);
-    return (
-      db.User.findOne({ _id: userID })
-        .then((dbUser) => {
-          {
-            dbUser.games.map((game) => game.id).includes(gameData.id)
-              ? dbUser.save()
-              : dbUser.games.push(gameData);
-            console.log("DB-USER =>", dbUser);
-            return dbUser.save();
-          }
-        })
-        .then((response) => res.json(response.data))
-        .catch((err) => console.log("error in addGameToUser", err))
-    );
+    return db.User.findOne({ _id: userID })
+      .then((dbUser) => {
+        {
+          dbUser.games.map((game) => game.id).includes(gameData.id)
+            ? dbUser.save()
+            : dbUser.games.push(gameData);
+          console.log("DB-USER =>", dbUser);
+          return dbUser.save();
+        }
+      })
+      .then((response) => res.json(response.data))
+      .catch((err) => console.log("error in addGameToUser", err));
   },
 
   updateGame: function (gameID, userID) {
