@@ -12,8 +12,9 @@ const Bar = () => {
   const handleLogout = () => {
     console.log("INSIDE HANDLELOGOUT FUNCTION")
     API.userLogout()
-    .then((res) => history.push("/"))
-    .catch((err) => console.log(err))
+    .then(() => console.log("API.userLogout"))
+    .then(() => history.push("/"))
+    .catch((err) => console.log("ERROR FROM handleLogout =>", err))
   };
 
   return (

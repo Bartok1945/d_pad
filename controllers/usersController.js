@@ -1,5 +1,5 @@
 const db = require("../models");
-const axios = require('axios');
+const axios = require("axios");
 
 // Defining methods for the usersController
 module.exports = {
@@ -25,47 +25,54 @@ module.exports = {
 
   addGameToUser: function (gameData, userID) {
     console.log("userID in addGametoUser", userID);
+    return (
+      db.User.findOne({ _id: userID })
+        .then((dbUser) => {
+          {
+            dbUser.games.map((game) => game.id).includes(gameData.id)
+              ? dbUser.save()
+              : dbUser.games.push(gameData);
+            console.log("DB-USER =>", dbUser);
+            return dbUser.save();
+          }
+        })
+        .then((response) => res.json(response.data))
+
+        // .then((dbModel, res) => {
+        //   console.log("dbModel from addGametoUser", dbModel);
+        //   res.send(dbModel);
+        // })
+        .catch((err) => console.log("error in addGameToUser", err))
+    );
+  },
+
+  deleteGameFromUser: function (gameID, userID) {
+    console.log("userID in REMOVEGametoUser", userID);
+    console.log("gameData in REMOVEGametoUser", gameID);
+
     return db.User.findOne({ _id: userID })
       .then((dbUser) => {
-        {
-          dbUser.games.map((game) => game.id).includes(gameData.id)
-            ? dbUser.save()
-            : dbUser.games.push(gameData);
-          console.log("DB-USER =>", dbUser);
-          return dbUser.save();
-        }
-      })
-      // .then((dbModel, res) => {
-      //   console.log("dbModel from addGametoUser", dbModel);
-      //   res.send(dbModel);
-      // })
-      .catch((err) => console.log("error in addGameToUser", err));
-  },
-
-  removeGameFromUser: function (gameData, userID) {
-    console.log("userID in addGametoUser", userID);
-    return db.User.findById({ _id: UserID })
-      .then((dbUser) => {
         let savedGames = dbUser.games.map((game) => game.id);
-        {
-          !savedGames.includes(gameData.id)
-            ? console.log("GAME NOT FOUND")
-            : dbUser.games.remove();
+        console.log("SAVEDGAMES ARRAY ", savedGames)
+        if(savedGames.includes(parseInt(gameID.id))) {
+          dbUser.games = dbUser.games.filter(game => game.id !== parseInt(gameID.id));
+          console.log(`dbUSer.games`, dbUser.games)
+          return dbUser.save();
+        } else {
+            console.log("THERE WAS AN ERROR TRYING TO REMOVE A GAME FORM THE USER ")
         }
         console.log("DB-USER =>", dbUser);
-        return dbUser.save();
       })
-      .then((dbModel) => {
-        console.log("dbModel from addGametoUser", dbModel);
-        res.send(dbModel);
-      })
-      .catch((err) => res.status(422).json(err));
-  },
+      .catch((err) => console.log("error in deleteGameFromUser", err))
+    },
 
   getAllGames: function (req, res) {
-    axios.get(`https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100`)
-    .then((response) => res.json(response.data))
-    .catch(err => console.log(err));
+    axios
+      .get(
+        `https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100`
+      )
+      .then((response) => res.json(response.data))
+      .catch((err) => console.log(err));
   },
 
   // getConsoleGames: async function (req, res) {
@@ -75,4 +82,18 @@ module.exports = {
   //   .then((response) => res.json(response.data))
   //   .catch(err => console.log(err));
   // },
+
+  getUserGames: function (userID, res) {
+    console.log("userID ingetUserGames controller", JSON.stringify(userID));
+    return db.User.findOne({ _id: userID })
+      .then((dbUser) => {
+        console.log("dbUser", dbUser);
+        return dbUser;
+      })
+      .then((dbUser) => res.json(dbUser))
+      .catch((err) => {
+        console.log("ERR in getUserGames", err);
+        res.status(422).json(err);
+      });
+  },
 };
