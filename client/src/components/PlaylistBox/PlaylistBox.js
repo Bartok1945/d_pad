@@ -16,6 +16,21 @@ const PlaylistBox = () => {
     { id: "The Lion King", played: true },
   ];
 
+
+  function handleClickPlayed(e) {
+    e.preventDefault();
+    console.log('The played button was clicked');
+    games.id = true;
+
+  }
+
+  function handleClickDel(e) {
+    e.preventDefault();
+    console.log('The delete button was presssed');
+  }
+
+
+
   return (
     <div>
       <Container fluid>
@@ -36,30 +51,32 @@ const PlaylistBox = () => {
                 <Row>
                   <Col md={{ span: 3, offset: 1 }}>
                     <div className="container1">
-                      <h2>Games to beat:</h2>
-                      {games.map((game) => (
-                        <ul>
+                    <h2 >Games to beat:</h2>
+                    <ul>
+                    {games.filter(game => game.played === false).map(gamePlayed => (
                           <li>
-                            <p>{game.id}</p>
-                            <button className="played" id={game.id}>
+                           <p>{gamePlayed.id}</p>
+                            <button className="played" id={gamePlayed.id} onClick={handleClickPlayed}>
                               Played
                             </button>
                           </li>
-                        </ul>
                       ))}
+                      </ul>
                     </div>
                   </Col>
                   <Col md={{ span: 3, offset: 4 }}>
                     <div className="container2">
                       <h2>Games in the Vault:</h2>
-                      {games.map((game) => (
-                        <ul>
-                          <li>{game.id}</li>
-                          <button className="delete" id={game.id}>
-                            Delete
-                          </button>
-                        </ul>
-                      ))}
+                      <ul>
+                      {games.filter(game => game.played === true).map(gamePlayed => (
+                          <li>
+                           <p>{gamePlayed.id}</p>
+                            <button className="delete" id={gamePlayed.id} onClick={handleClickDel}>
+                              delete
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </Col>
                 </Row>
