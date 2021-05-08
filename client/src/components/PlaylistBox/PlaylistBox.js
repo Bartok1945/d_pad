@@ -43,9 +43,9 @@ const PlaylistBox = () => {
 
   return (
     <div>
-      <Container className="containerPlay">
-            <Row className="jumbotronMain justify-content-md-center" >
-              <Col md={3}>
+      <Container  md={{ span: 12, offset: 0}}className="containerPlay d-flex justify-content-md-center">
+            <Row md={{ span: 12 , offset: 1 }}className="jumbotronMain" >
+              <Col md={{ span: 3, offset: 0 }}>
                 <div className="logo">
                   <img
                     className="logo"
@@ -55,9 +55,9 @@ const PlaylistBox = () => {
                 </div>
               </Col>
 
-              <Col md={{ span: 6, offset: 1 }}>
+              <Col md={{ span: 9, offset: 0 }}>
                 <Row>
-                  <Col md={{ span: 3, offset: 1 }}>
+                  <Col md={{ span: 3, offset: 0 }}>
                     <div className="container1">
                       <h2>Games to beat:</h2>
                       {/* {!userGames ? null : userGames.map((game) => (
@@ -70,7 +70,7 @@ const PlaylistBox = () => {
                       ))} */}
                     </div>
                   </Col>
-                  <Col md={{ span: 3, offset: 4 }}>
+                  <Col md={{ span: 3, offset: 0 }}>
                     <div className="container2">
                       <h2>Games Beaten:</h2>
                       {!userGames ? null : userGames.map((game) => (

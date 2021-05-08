@@ -65,7 +65,7 @@ and (-webkit-min-device-pixel-ratio: 2){
   and (-webkit-min-device-pixel-ratio: 2){ 
 
 .containerPlay{
-  padding-left: -20vw;
+  width: 130%;
   text-align: center;
 }
 
@@ -79,7 +79,6 @@ and (-webkit-min-device-pixel-ratio: 2){
   padding: .5vw;
   width: 20vw;
   height: 60vh;
-  margin-left: -50%;
   margin-top: 15%;
 }
 
@@ -93,7 +92,6 @@ and (-webkit-min-device-pixel-ratio: 2){
   padding: .5vw;
   width: 20vw;
   height: 60vh;
-  margin-left: -50%;
   margin-top: 15%;
 }
 
