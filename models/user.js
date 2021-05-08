@@ -9,6 +9,7 @@ const UserSchema = new Schema({
   games: [{ 
     id: {type: Number},
     title: {type: String, trim: true},
+    played: {type: Boolean, default: false},
   }],
 });
 

@@ -24,47 +24,49 @@ module.exports = {
   },
 
   addGameToUser: function (gameData, userID) {
-    console.log("userID in addGametoUser", userID);
-    return (
-      db.User.findOne({ _id: userID })
-        .then((dbUser) => {
-          {
-            dbUser.games.map((game) => game.id).includes(gameData.id)
-              ? dbUser.save()
-              : dbUser.games.push(gameData);
-            console.log("DB-USER =>", dbUser);
-            return dbUser.save();
-          }
-        })
-        .then((response) => res.json(response.data))
-
-        // .then((dbModel, res) => {
-        //   console.log("dbModel from addGametoUser", dbModel);
-        //   res.send(dbModel);
-        // })
-        .catch((err) => console.log("error in addGameToUser", err))
-    );
+    // console.log("userID in addGametoUser", userID);
+    return db.User.findOne({ _id: userID })
+      .then((dbUser) => {
+        {
+          dbUser.games.map((game) => game.id).includes(gameData.id)
+            ? dbUser.save()
+            : dbUser.games.push(gameData);
+          console.log("DB-USER =>", dbUser);
+          return dbUser.save();
+        }
+      })
+      .then((response) => res.json(response.data))
+      .catch((err) => console.log("error in addGameToUser", err));
   },
 
-  deleteGameFromUser: function (gameID, userID) {
-    console.log("userID in REMOVEGametoUser", userID);
-    console.log("gameData in REMOVEGametoUser", gameID);
+  updateGame: function (gameID, userID) {
+    // console.log("userID in updateGame", userID);
+    // console.log("gameData in updateGame", gameID);
 
     return db.User.findOne({ _id: userID })
       .then((dbUser) => {
         let savedGames = dbUser.games.map((game) => game.id);
-        console.log("SAVEDGAMES ARRAY ", savedGames)
-        if(savedGames.includes(parseInt(gameID.id))) {
-          dbUser.games = dbUser.games.filter(game => game.id !== parseInt(gameID.id));
-          console.log(`dbUSer.games`, dbUser.games)
+        console.log("SAVEDGAMES ARRAY ", savedGames);
+        if (savedGames.includes(parseInt(gameID.id))) {
+          console.log("DB.user inside updateGame", dbUser);
+          dbUser.games = dbUser.games.map((game) => {
+            if (parseInt(gameID.id) === game.id) {
+              game.played = true;
+            }
+            return game;
+          });
+
+          console.log(`dbUSer.games`, dbUser.games);
           return dbUser.save();
         } else {
-            console.log("THERE WAS AN ERROR TRYING TO REMOVE A GAME FORM THE USER ")
+          console.log(
+            "THERE WAS AN ERROR TRYING TO REMOVE A GAME FORM THE USER "
+          );
         }
         console.log("DB-USER =>", dbUser);
       })
-      .catch((err) => console.log("error in deleteGameFromUser", err))
-    },
+      .catch((err) => console.log("error in deleteGameFromUser", err));
+  },
 
   getAllGames: function (req, res) {
     axios
@@ -75,13 +77,37 @@ module.exports = {
       .catch((err) => console.log(err));
   },
 
-  // getConsoleGames: async function (req, res) {
-  //   console.log("PlatformData inside getConsoleGames", req);
-  //   await axios.get(`https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100&platforms=${req.id}`)
-  //   .then(console.log("req.id ==", req.id))
-  //   .then((response) => res.json(response.data))
-  //   .catch(err => console.log(err));
-  // },
+  deleteGameFromUser: function (gameID, userID) {
+    console.log("userID in REMOVEGametoUser", userID);
+    console.log("gameData in REMOVEGametoUser", gameID);
+    return db.User.findOne({ _id: userID })
+      .then((dbUser) => {
+        let savedGames = dbUser.games.map((game) => game.id);
+        console.log("SAVEDGAMES ARRAY ", savedGames);
+        if (savedGames.includes(parseInt(gameID.id))) {
+          dbUser.games = dbUser.games.filter(
+            (game) => game.id !== parseInt(gameID.id)
+          );
+          console.log(`dbUSer.games`, dbUser.games);
+          return dbUser.save();
+        } else {
+          console.log(
+            "THERE WAS AN ERROR TRYING TO REMOVE A GAME FORM THE USER "
+          );
+        }
+        console.log("DB-USER =>", dbUser);
+      })
+      .catch((err) => console.log("error in deleteGameFromUser", err));
+  },
+
+  getAllGames: function (req, res) {
+    axios
+      .get(
+        `https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100`
+      )
+      .then((response) => res.json(response.data))
+      .catch((err) => console.log(err));
+  },
 
   getUserGames: function (userID, res) {
     console.log("userID ingetUserGames controller", JSON.stringify(userID));
@@ -96,4 +122,12 @@ module.exports = {
         res.status(422).json(err);
       });
   },
+
+  // getConsoleGames: async function (req, res) {
+  //   console.log("PlatformData inside getConsoleGames", req);
+  //   await axios.get(`https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100&platforms=${req.id}`)
+  //   .then(console.log("req.id ==", req.id))
+  //   .then((response) => res.json(response.data))
+  //   .catch(err => console.log(err));
+  // },
 };
