@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PlaylistBox.css";
 import Container from "react-bootstrap/Container";
 import Jumbotron from "react-bootstrap/Jumbotron";
@@ -17,17 +17,43 @@ const PlaylistBox = () => {
     { id: "The Lion King", played: true },
   ];
 
-  const deleteGame = (game) => {
-    let gameData = {
-      id: game.id,
-      title: game.name,
-    };
-    API.deleteGame(gameData)
-      .then(() => console.log("gameData", gameData))
-      .catch((err) =>
-        console.log("The following error occurred adding games = ", err)
-      );
+  const [userGames, setUserGames] = useState([])
+  const [userData, setUserData] = useState({})
+
+
+  useEffect(() => {
+    API.getUser()
+      .then((response) => {
+        setUserData(response)
+      })
+      .then(() => console.log("userData from PlaylistBox", userData))
+      .then(getUserGames())
+      .catch((err) => console.log("err from useEffect in swipes.js", err));
+  }, []);
+
+  // useEffect(() => {
+  //   API.getUserGames(userData.data)
+  //   .then((response) => console.log(response.data))
+  //   .catch((err) => console.log(err))
+  // }, [])
+
+  const getUserGames = () => {
+    API.getUserGames(userData.data)
+    .then((response) => console.log("RESPONSE.DATA from getUserGames function ==>", response.data))
+    .catch((err) => console.log(err))
   };
+
+  // const deleteGame = (game) => {
+  //   let gameData = {
+  //     id: game.id,
+  //     title: game.name,
+  //   };
+  //   API.deleteGame(gameData)
+  //     .then(() => console.log("gameData", gameData))
+  //     .catch((err) =>
+  //       console.log("The following error occurred adding games = ", err)
+  //     );
+  // };
 
   return (
     <div>

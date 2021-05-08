@@ -5,8 +5,7 @@ const passport = require("../../passport");
 // Matches with "/api/users/signup"
 router.post("/signup", usersController.create);
 
-
-router.post("/login", isLoggedIn, passport.authenticate("local"), (req, res)  => {
+router.post("/login", passport.authenticate("local"), (req, res)  => {
     console.log("logged in - req.user", req.user);
     let userInfo = {
       email: req.user.email,
@@ -27,23 +26,22 @@ router.post("/game", (req, res) => {
  }
 );
 
-router.delete("/game", (req, res) => {
-  let gameData = {
-    id: req.body.id,
-    title: req.body.title,
-  };
-  usersController.removeGameFromUser(gameData, req.user.id)
-  .then(() => res.send(gameData))
-  .catch((err) => console.log("ERROR IN remove /game API ROUTE =>", err))
- }
-);
+// router.delete("/game/:id", (req, res) => {
+//   let gameData = {
+//     id: req.body.id,
+//     title: req.body.title,
+//   };
+//   usersController.deleteGameFromUser(gameData, req.user.id)
+//   .then(() => res.send(gameData))
+//   .catch((err) => console.log("ERROR IN remove /game API ROUTE =>", err))
+//  }
+// );
 
 router.get("/logout", (req, res) => {
-  req.session.destroy(function (err) {
-    res.redirect('/');
   console.log("router.get logout route")
-})
-})
+  req.logout();
+  res.redirect("/");
+});
 
 router.get("/auth", (req, res) => {
   res.send(req.user.id)
@@ -58,21 +56,11 @@ router.get("/getAllGames", usersController.getAllGames)
 //   .catch((err) => console.log("ERROR IN remove /game API ROUTE =>", err))
 // })
 
-// router.get("/:id", (req, res) => {
-//   usersController.getUserGames(req.params.id)
-//   .then((response) => res.send(response.data))
-//   .catch((err) => console.log("ERROR IN remove /game API ROUTE =>", err))
-// })
+router.get("/:id", (req, res) => {
+  console.log("REQ>USER INSIDE ROUTER", req.user)
+  usersController.getUserGames(req.user.id, res)
+})
 
 
 module.exports = router;
 
-function isLoggedIn(req, res, next) {
-  if (req.user) {
-    res.json({
-      email: req.user.email,
-    })
-  } else {
-    res.redirect("/");
-  }
-};
