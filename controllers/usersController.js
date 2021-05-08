@@ -85,7 +85,6 @@ module.exports = {
   deleteGameFromUser: function (gameID, userID) {
     console.log("userID in REMOVEGametoUser", userID);
     console.log("gameData in REMOVEGametoUser", gameID);
-
     return db.User.findOne({ _id: userID })
       .then((dbUser) => {
         let savedGames = dbUser.games.map((game) => game.id);
