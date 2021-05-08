@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./PlaylistBox.css";
 import Container from "react-bootstrap/Container";
-import Jumbotron from "react-bootstrap/Jumbotron";
 import { Row } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import API from "../../utils/API";
@@ -44,10 +43,8 @@ const PlaylistBox = () => {
 
   return (
     <div>
-      <Container fluid>
-        <Row className="justify-content-md-center mainBox" md={1}>
-          <Jumbotron fluid>
-            <Row>
+      <Container className="containerPlay">
+            <Row className="jumbotronMain justify-content-md-center" >
               <Col md={3}>
                 <div className="logo">
                   <img
@@ -89,8 +86,6 @@ const PlaylistBox = () => {
                 </Row>
               </Col>
             </Row>
-          </Jumbotron>
-        </Row>
       </Container>
     </div>
   )

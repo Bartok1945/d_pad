@@ -18,7 +18,7 @@ function GameCard(props) {
               <i className="fas fa-thumbs-down"></i>
             </div>
           </div>
-          <div className="jumbotron col-l-8 col-m-8 col-s-8">
+          <div className="jumbotronGame col-l-8 col-m-8 col-s-8">
             <div className="container-text">
               <div className="jumbotron-body">
                 <div className="card">
