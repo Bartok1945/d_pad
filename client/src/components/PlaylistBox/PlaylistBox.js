@@ -19,8 +19,9 @@ const PlaylistBox = () => {
 
   function handleClickPlayed(e) {
     e.preventDefault();
-    console.log('The played button was clicked');
-    games.id = true;
+    console.log(e.target);
+    console.log('The played button was clicked', );
+    games.played = true;
 
   }
 
@@ -56,7 +57,7 @@ const PlaylistBox = () => {
                     {games.filter(game => game.played === false).map(gamePlayed => (
                           <li>
                            <p>{gamePlayed.id}</p>
-                            <button className="played" id={gamePlayed.id} onClick={handleClickPlayed}>
+                            <button className="played" id={gamePlayed.id} value={gamePlayed.played} onClick={handleClickPlayed}>
                               Played
                             </button>
                           </li>
