@@ -27,7 +27,7 @@ export default {
     return axios.post("/api/users/game/", gameData);
   },
 
-  removeGame: function (gameID) {
+  deleteUserGame: function (gameID) {
     return axios.delete("/api/users/game/" + gameID);
   },
 

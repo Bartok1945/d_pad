@@ -26,16 +26,13 @@ router.post("/game", (req, res) => {
  }
 );
 
-// router.delete("/game/:id", (req, res) => {
-//   let gameData = {
-//     id: req.body.id,
-//     title: req.body.title,
-//   };
-//   usersController.deleteGameFromUser(gameData, req.user.id)
-//   .then(() => res.send(gameData))
-//   .catch((err) => console.log("ERROR IN remove /game API ROUTE =>", err))
-//  }
-// );
+router.delete("/game/:id", (req, res) => {
+  let gameData = {
+    id: req.body.id,
+  };
+  usersController.deleteGameFromUser(gameData, req.user.id)
+ }
+);
 
 router.get("/logout", (req, res) => {
   console.log("router.get logout route")

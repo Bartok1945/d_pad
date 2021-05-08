@@ -46,13 +46,15 @@ module.exports = {
 
   deleteGameFromUser: function (gameData, userID) {
     console.log("userID in addGametoUser", userID);
-    return db.User.findById({ _id: UserID })
+    console.log("gameData in addGametoUser", gameData);
+
+    return db.User.findById({ _id: userID })
       .then((dbUser) => {
         let savedGames = dbUser.games.map((game) => game.id);
-        {
-          !savedGames.includes(gameData.id)
-            ? console.log("GAME NOT FOUND")
-            : dbUser.games.remove();
+        if(savedGames.includes(gameData.id)) {
+          dbUser.games.remove();
+        } else {
+            console.log("THERE WAS AN ERROR TRYING TO REMOVE A GAME FORM THE USER ")
         }
         console.log("DB-USER =>", dbUser);
         return dbUser.save();
