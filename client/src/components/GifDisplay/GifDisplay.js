@@ -4,7 +4,7 @@ import './GifDisplay.css';
 function GifDisplay() {
   return (
     <div className="row justify-content-md-center">
-        <div className="jumbotron justify-content-md-center">
+        <div className="jumbotronGif justify-content-md-center">
         <img
             src="https://user-images.githubusercontent.com/74163812/115273885-1b9fbe80-a10e-11eb-8d9d-187028989636.gif"
             className="card-img-top mb-5"

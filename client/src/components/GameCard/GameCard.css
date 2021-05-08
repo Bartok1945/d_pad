@@ -1,9 +1,11 @@
 .switch {
-  margin-top: 7%;
+  margin-top: 1%;
   margin-bottom: 11%;
+  margin-left: -2%;
 }
 
 .jumbotron {
+  background-color: #242329 !important;
   position: relative;
   width: 70%;
   display: inline-block;
@@ -95,15 +97,17 @@
 }
 
 .fa-thumbs-down {
-  font-size: 3rem;
+  font-size: 4.5vw;
   color: black;
-  padding-top: 10%;
+  margin-left: 18%;
+  padding-top: 18%;
   text-align: center;
 }
 
 .fa-thumbs-up {
-  font-size: 3rem;
+  font-size: 4.5vw;
   color: black;
+  margin-left: 18%;
   padding-top: 10%;
   text-align: center;
 }

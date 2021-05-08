@@ -116,7 +116,7 @@ const Swipes = () => {
         </form>
       </div>
       {!currentGame ? (
-        <p>No Games.</p>
+        <p className = "startUp">Select your preferred PLATFORM to begin.</p>
       ) : (
         <GameCard
           id={currentGame.id}
