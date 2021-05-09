@@ -41,6 +41,15 @@ const PlaylistBox = () => {
       );
   };
 
+  const updateGame = (game) => {
+    console.log("GAME DATA IN deleteUSerGame", JSON.stringify(game.id))
+    API.updateGame(JSON.stringify(game.id))
+    .then((response) => setUserGames(response.data.games))
+    .catch((err) =>
+    console.log("The following error occurred updateGame = ", err)
+  );
+  }
+
   return (
     <div>
       <Container className="containerPlay">
@@ -60,22 +69,22 @@ const PlaylistBox = () => {
                   <Col md={{ span: 3, offset: 1 }}>
                     <div className="container1">
                       <h2>Games to beat:</h2>
-                      {/* {!userGames ? null : userGames.map((game) => (
-                        <ul>
+                      {!userGames ? null : userGames.filter(game => game.played === false).map((game) => (
+                        <ul key={game.index}>
                           <li>{game.title}</li>
-                          <button className="delete" id={game.id}>
+                          <button className="delete" id={game.id} onClick={() => updateGame(game)}>
                             Played
                           </button>
                         </ul>
-                      ))} */}
+                      ))}
                     </div>
                   </Col>
                   <Col md={{ span: 3, offset: 4 }}>
                     <div className="container2">
                       <h2>Games Beaten:</h2>
-                      {!userGames ? null : userGames.map((game) => (
-                        <ul>
-                          <li>{game.title}</li>
+                      {!userGames ? null : userGames.filter(game => game.played === true).map((game) => (
+                        <ul key={game.index}>
+                        <li>{game.title}</li>
                           <button className="delete" id={game.id} onClick={() => deleteUserGame(game)}>
                             Delete
                           </button>

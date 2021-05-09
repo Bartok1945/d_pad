@@ -1,20 +1,18 @@
 import React from "react";
 import "./Bar.css";
 import { Link } from "react-router-dom";
-import API from '../../utils/API';
+import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
 
-
 const Bar = () => {
-
   let history = useHistory();
 
   const handleLogout = () => {
-    console.log("INSIDE HANDLELOGOUT FUNCTION")
+    console.log("INSIDE HANDLELOGOUT FUNCTION");
     API.userLogout()
-    .then(() => console.log("API.userLogout"))
-    .then(() => history.push("/"))
-    .catch((err) => console.log("ERROR FROM handleLogout =>", err))
+      .then(() => console.log("API.userLogout"))
+      .then(() => history.push("/"))
+      .catch((err) => console.log("ERROR FROM handleLogout =>", err));
   };
 
   return (
@@ -43,13 +41,15 @@ const Bar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <button className="nav-link logout-button" onClick={handleLogout}>Logout</button>
+            <button className="nav-link logout-button" onClick={handleLogout}>
+              Logout
+            </button>
           </li>
         </ul>
         <span className="navbar-text"></span>
       </div>
     </nav>
   );
-}
+};
 
 export default Bar;
