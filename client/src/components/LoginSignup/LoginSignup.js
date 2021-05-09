@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./LoginSignup.css";
-import API from '../../utils/API';
+import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
-import { useAlert } from 'react-alert'
-
+import { useAlert } from "react-alert";
 
 const LoginSignup = () => {
   const [userData, setUserData] = useState({
@@ -11,7 +10,10 @@ const LoginSignup = () => {
     password: "",
   });
 
-  const alert = useAlert()
+  const emailValidation = (input) =>
+    /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(input) ? true : false;
+
+  const alert = useAlert();
 
   const onChange = (event) => {
     event.preventDefault();
@@ -26,35 +28,51 @@ const LoginSignup = () => {
     e.preventDefault();
     console.log("userData from handleSignup", userData);
     if (!userData.email) {
-      return alert.show("Please enter an email address")
-    } if (!userData.password) {
-      return alert.show("Please enter a password")
+      return alert.show("Please enter an email address");
     }
-    signUpUser(userData);
+    if (!userData.password) {
+      return alert.show("Please enter a password");
+    }
+    emailValidation(userData.email)
+      ? signUpUser(userData)
+      : alert.show("Please enter a valid email address (ex: email@email.com)");
   };
 
-let history = useHistory();
+  let history = useHistory();
 
   const signUpUser = (userData) => {
     console.log("usrData form signUpUser function ==", userData);
     API.userSignup(userData)
       .then(console.log("USER HAS BEEN SIGNED UP!"))
-      .then(response => {response.status === 200 ? history.push('/swipes') : console.log("something aint right")})
+      .then((response) => {
+        response.status === 200
+          ? history.push("/swipes")
+          : console.log("something aint right");
+      })
       .catch((err) => console.log("SIGN UP ERROR ==>", err));
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
     if (!userData.email) {
-      return alert.show("Please enter an email address")
-    } if (!userData.password) {
-      return alert.show("Please enter a password")
+      return alert.show("Please enter your email address");
     }
-    console.log("USER DATA ==", userData)
-    API.userLogin(userData)
-      .then(console.log("USER HAS BEEN LOGGED IN!"))
-      .then(response => {response.status === 200 ? history.push('/swipes') : console.log("something aint right")})
-      .catch((err) => console.log("LOGIN ERROR ==>", err));
+    if (!userData.password) {
+      return alert.show("Please enter your password");
+    }
+    console.log("USER DATA ==", userData);
+    if (emailValidation(userData.email)) {
+      API.userLogin(userData)
+        .then(console.log("USER HAS BEEN LOGGED IN!"))
+        .then((response) => {
+          response.status === 200
+            ? history.push("/swipes")
+            : console.log("something aint right");
+        })
+        .catch((err) => console.log("LOGIN ERROR ==>", err));
+    } else {
+      alert.show("Please enter a valid email address (ex: email@email.com)");
+    }
   };
 
   return (
