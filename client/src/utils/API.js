@@ -10,15 +10,9 @@ export default {
     return axios.post("/api/users/login/", userData);
   },
 
-  // getConsoleGames: function (id) {
-  //   console.log("platform inside api rouite")
-  //   return axios.get("/api/users/getConsoleGames/" + id)
-  // },
-
   getConsoleGames: function (id) {
-    return axios.get(
-      `https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100&platforms=${id}`
-    );
+    console.log("platform inside api route", id)
+    return axios.get("/api/users/getConsoleGames/" + id)
   },
 
   getAllGames: function () {

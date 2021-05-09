@@ -123,11 +123,10 @@ module.exports = {
       });
   },
 
-  // getConsoleGames: async function (req, res) {
-  //   console.log("PlatformData inside getConsoleGames", req);
-  //   await axios.get(`https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100&platforms=${req.id}`)
-  //   .then(console.log("req.id ==", req.id))
-  //   .then((response) => res.json(response.data))
-  //   .catch(err => console.log(err));
-  // },
+  getConsoleGames: async function (platformID, res) {
+    console.log("PlatformData inside getConsoleGames", platformID);
+    await axios.get(`https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100&platforms=${platformID}`)
+    .then((response) => res.json(response.data))
+    .catch(err => console.log(err));
+  },
 };
