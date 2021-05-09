@@ -1,3 +1,6 @@
+@media screen 
+and (min-device-width: 1000px)  
+and (-webkit-min-device-pixel-ratio: 2){ 
 
 .containerPlay{
   text-align: center;
@@ -54,3 +57,65 @@
   height: 90%;
   width: 130%;
 }
+}
+
+
+@media screen 
+  and (min-device-width: 1700px)  
+  and (-webkit-min-device-pixel-ratio: 2){ 
+
+.containerPlay{
+  width: 130%;
+  text-align: center;
+}
+
+.container1{
+  background-color: #171b24;
+  color: white;
+  font-family: "Iceland", cursive;
+  border:.3vw;
+  border-color: #5eb090;
+  border-style:solid; 
+  padding: .5vw;
+  width: 20vw;
+  height: 60vh;
+  margin-top: 15%;
+}
+
+.container2{
+  background-color: #171b24;
+  color: white;
+  font-family: "Iceland", cursive;
+  border:.3vw;
+  border-color: #5eb090;
+  border-style:solid; 
+  padding: .5vw;
+  width: 20vw;
+  height: 60vh;
+  margin-top: 15%;
+}
+
+.jumbotronMain{
+  height: 70vh;
+  width: 130%;
+  padding-top: 0px;
+  background-color: #242329;
+  margin-top: 25px;
+  font-family: 'Iceland', cursive;
+  border-style: solid;
+  border-width: 4px;
+  border-color: #f4b324;
+  flex-basis: auto;
+  text-align: center;
+}
+
+.logo{
+  margin-left: -14%;
+  margin-top: 5%;
+  padding: 0rem;
+  height: 90%;
+  width: 130%;
+  position: relative;
+}
+
+  }
