@@ -14,4 +14,17 @@
   color: #f4b324;
   margin-right: 20px;
   font-size: 35px;
+  list-style: none;
+}
+
+.logout-button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden; 
+}
+
+.logout-button:hover {
+  color: #007bff;
 }
