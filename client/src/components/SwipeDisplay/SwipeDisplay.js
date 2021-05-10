@@ -6,7 +6,7 @@ import "./SwipeDisplay.css";
 function SwipeDisplay(props) {
   // const [state, dispatch] = useCountContext();
     return (
-        <div class="jumbotron gameJumbotron">
+        <div class="jumbotron">
         <div id="carousel-1" class="carousel slide multi-item-carousel" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
