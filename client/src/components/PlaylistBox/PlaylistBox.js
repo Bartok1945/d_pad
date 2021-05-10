@@ -59,8 +59,8 @@ const PlaylistBox = () => {
                 <img
                   src="https://user-images.githubusercontent.com/74163812/116794268-b77be380-aa99-11eb-9b5c-c3298c088690.png"
                   alt="highscore"
-                  height="350px"
-                  width="350px"
+                  height="100%"
+                  width="100%"
                 />
               </div>
             </Col>
