@@ -5,11 +5,13 @@ import Bar from "../../components/Bar/Bar";
 import API from "../../utils/API";
 import "./Swipes.css";
 
+
 const Swipes = () => {
   const [games, setGames] = useState([]);
   const [gameIndex, setGameIndex] = useState(0);
   const [platform, setPlatform] = useState({});
   const [currentGame, setCurrentGame] = useState();
+  const [description, setDescription] = useState();
 
   useEffect(() => {
     API.getUser()
@@ -47,7 +49,9 @@ const Swipes = () => {
           )
         )
         .then(() =>
-          console.log("games state when selecting ANYTHING ELSE", games)
+          gameDescription(currentGame.id)
+
+
         )
         .catch((err) =>
           console.log("The following error occurred getting games = ", err)
@@ -87,20 +91,20 @@ const Swipes = () => {
     setCurrentGame(games[gameIndex]);
   };
 
-  const gameDescription = (gameID) => { 
+  const gameDescription = (gameID) => {
     console.log("Game ID ", gameID)
-
-     let rawGameDescription;
-
-   API.getGameDescription(gameID)
-    
-    .then((res) => rawGameDescription = (res.data.description_raw))
-    .catch((err) => console.log("ERROR FROM getGameDescription", err))
+    let rawGameDescription;
+    API.getGameDescription(gameID)
+      .then((res) => {
+        rawGameDescription = (res.data.description_raw)
+        console.log(rawGameDescription)
+        setDescription(rawGameDescription)
+        return rawGameDescription
+      })
+      .catch((err) => console.log("ERROR FROM getGameDescription", err))
     console.log(rawGameDescription)
-
-return rawGameDescription
   }
-  
+
   return (
     <PageWrapper>
       <Bar />
@@ -133,7 +137,7 @@ return rawGameDescription
         </form>
       </div>
       {!currentGame ? (
-        <p className = "startUp">Select your preferred PLATFORM to begin.</p>
+        <p className="startUp">Select your preferred PLATFORM to begin.</p>
       ) : (
         <GameCard
           id={currentGame.id}
@@ -147,7 +151,7 @@ return rawGameDescription
           )}
           rating={currentGame.rating}
           released={currentGame.released}
-          description={gameDescription(game.id)}
+          description={description}
         />
       )}
     </PageWrapper>
