@@ -77,6 +77,12 @@ module.exports = {
       .catch((err) => console.log(err));
   },
 
+  getGameDescription: async function(gameID) {
+    return await axios.get(`https://api.rawg.io/api/games/${gameID}?key=d0c84df9f8e946c1a8354306de37078b`)
+    .then((response) => res.json(response.data))
+    .catch(err => console.log(err));
+  },
+
   deleteGameFromUser: function (gameID, userID) {
     console.log("userID in REMOVEGametoUser", userID);
     console.log("gameData in REMOVEGametoUser", gameID);

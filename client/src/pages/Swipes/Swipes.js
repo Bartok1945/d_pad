@@ -10,6 +10,7 @@ const Swipes = () => {
   const [gameIndex, setGameIndex] = useState(0);
   const [platform, setPlatform] = useState({});
   const [currentGame, setCurrentGame] = useState();
+  const [description, setDescription] = useState();
 
   useEffect(() => {
     API.getUser()
@@ -46,14 +47,16 @@ const Swipes = () => {
             gameResult[Math.floor(Math.random() * gameResult.length)]
           )
         )
-        .then(() =>
-          console.log("games state when selecting ANYTHING ELSE", games)
-        )
+        // .then(() => gameDescription(currentGame.id))
         .catch((err) =>
           console.log("The following error occurred getting games = ", err)
         );
     }
   }, [platform]);
+
+  useEffect(() => {
+    gameDescription(currentGame?.id);
+  }, [currentGame]);
 
   const addGame = (game) => {
     let gameData = {
@@ -85,6 +88,19 @@ const Swipes = () => {
       console.log("All outta games!");
     }
     setCurrentGame(games[gameIndex]);
+  };
+
+  const gameDescription = (gameID) => {
+    console.log("Game ID ", gameID);
+    let rawGameDescription;
+    API.getGameDescription(gameID)
+      .then((res) => {
+        rawGameDescription = res.data.description_raw;
+        console.log(rawGameDescription);
+        setDescription(rawGameDescription);
+        return rawGameDescription;
+      })
+      .catch((err) => console.log("ERROR FROM getGameDescription", err));
   };
 
   return (
@@ -119,7 +135,7 @@ const Swipes = () => {
         </form>
       </div>
       {!currentGame ? (
-        <p className = "startUp">Select your preferred PLATFORM to begin.</p>
+        <p className="startUp">Select your preferred PLATFORM to begin.</p>
       ) : (
         <GameCard
           id={currentGame.id}
@@ -129,10 +145,11 @@ const Swipes = () => {
           name={currentGame.name}
           image={currentGame.background_image}
           platforms={currentGame.platforms?.map(
-            (p) => `${p.platform.name}   | `
+            (p) => `${p.platform.name}  | `
           )}
           rating={currentGame.rating}
           released={currentGame.released}
+          description={description}
         />
       )}
     </PageWrapper>

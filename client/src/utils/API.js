@@ -27,6 +27,9 @@ export default {
     // console.log("gameID inside updateGame API route", gameID);
     return axios.put("/api/users/game/" + gameID);
   },
+  getGameDescription: function(gameID) {
+    return axios.get(`https://api.rawg.io/api/games/${gameID}?key=d0c84df9f8e946c1a8354306de37078b`)
+  },
 
   deleteUserGame: function (gameID) {
     // console.log("gameID inside API route", gameID);
