@@ -20,7 +20,7 @@ With the myriad of games available in today's market, it's hard to know what to 
 ![Image](https://user-images.githubusercontent.com/74163812/117587958-92691f80-b0ee-11eb-8525-e871be90f22d.png)
 <br />
 <br />
-GitHib Link: https://github.com/Bartok1945/d_pad <br /><br />
+Heroku deployed link: https://rocky-hollows-56755.herokuapp.com <br /><br />
 
 ### Contributing:
 Thom Huenger- GitHub: [Bartok1945](http://github.com/Bartok1945)<br /><br />
