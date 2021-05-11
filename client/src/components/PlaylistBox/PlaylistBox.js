@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./PlaylistBox.css";
 import Container from "react-bootstrap/Container";
-import { Row, Col, Grid } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import API from "../../utils/API";
 import { useAlert } from "react-alert";
 
@@ -38,7 +38,7 @@ const PlaylistBox = () => {
     console.log("GAME DATA IN deleteUSerGame", JSON.stringify(game.id));
     API.deleteUserGame(JSON.stringify(game.id))
       .then((response) => setUserGames(response.data.games))
-      .then(() => alert.show(`"${game.title}" has been removed.`))
+      .then(() => alert.success(`"${game.title}" has been deleted.`))
       .catch((err) =>
         console.log("The following error occurred in deleteUserGame = ", err)
       );
@@ -76,7 +76,7 @@ const PlaylistBox = () => {
                   : userGames
                       .filter((game) => game.played === false)
                       .map((game) => (
-                        <ul key={Math.floor(Math.random() * 1000) + 1}>
+                        <ul key={game.id}>
                           <li>{game.title}</li>
                           <button
                             className="delete"
@@ -97,7 +97,7 @@ const PlaylistBox = () => {
                   : userGames
                       .filter((game) => game.played === true)
                       .map((game) => (
-                        <ul key={Math.floor(Math.random() * 1000) + 1}>
+                        <ul key={game.id}>
                           <li>{game.title}</li>
                           <button
                             className="delete"

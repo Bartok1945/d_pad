@@ -11,7 +11,7 @@ const LoginSignup = () => {
   });
 
   const emailValidation = (input) =>
-    /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(input) ? true : false;
+    /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(input) ? true : false;
 
   const alert = useAlert();
 
@@ -71,7 +71,7 @@ const LoginSignup = () => {
         })
         .catch((err) => console.log("LOGIN ERROR ==>", err));
     } else {
-      alert.show("Please enter a valid email address (ex: email@email.com)");
+      alert.error("Please enter a valid email address (ex: email@email.com)");
     }
   };
 

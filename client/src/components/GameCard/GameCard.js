@@ -4,7 +4,6 @@ import LeftSwitch from "../../components/GameCard/LeftSwitch.png";
 import RightSwitch from "../../components/GameCard/RightSwitch.png";
 
 function GameCard(props) {
-  {console.log(props)}
   return (
     <div className="container">
       <div className="switch justify-content-md-center">

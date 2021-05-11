@@ -33,7 +33,6 @@ module.exports = {
           console.log("DB-USER =>", dbUser);
           return dbUser.save();
       })
-      .then((response) => res.json(response.data))
       .catch((err) => console.log("error in addGameToUser", err));
   },
 

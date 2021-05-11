@@ -21,6 +21,7 @@ router.post("/game", (req, res) => {
   };
   usersController
     .addGameToUser(gameData, req.user.id)
+    .then((results) => res.send(results))
     .catch((err) => console.log("ERROR IN add /game API ROUTE =>", err));
 }); 
 
