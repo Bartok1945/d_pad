@@ -19,7 +19,7 @@ function GameCard(props) {
               <i className="fas fa-thumbs-down"></i>
             </div>
           </div>
-          <div className="jumbotron col-l-8 col-m-8 col-s-8">
+          <div className="jumbotronGame col-l-8 col-m-8 col-s-8">
             <div className="container-text">
               <div className="jumbotron-body">
                 <div className="card">
@@ -33,8 +33,7 @@ function GameCard(props) {
                   <div className="content">
                     <ul>
                       <li>
-                        <strong className="tealColor">Title:</strong>{" "}
-                        {props.name}
+                        <strong className="tealColor title">{props.name}</strong>{" "}
                       </li>
                       <li>
                         <strong className="tealColor">Platform(s):</strong>{" "}
