@@ -27,15 +27,12 @@ module.exports = {
     // console.log("userID in addGametoUser", userID);
     return db.User.findOne({ _id: userID })
       .then((dbUser) => {
-        {
           dbUser.games.map((game) => game.id).includes(gameData.id)
             ? dbUser.save()
             : dbUser.games.push(gameData);
           console.log("DB-USER =>", dbUser);
           return dbUser.save();
-        }
       })
-      .then((response) => res.json(response.data))
       .catch((err) => console.log("error in addGameToUser", err));
   },
 
@@ -60,7 +57,7 @@ module.exports = {
           return dbUser.save();
         } else {
           console.log(
-            "THERE WAS AN ERROR TRYING TO REMOVE A GAME FORM THE USER "
+            "THERE WAS AN ERROR TRYING TO UPDATE GAME "
           );
         }
         console.log("DB-USER =>", dbUser);
@@ -71,14 +68,14 @@ module.exports = {
   getAllGames: function (req, res) {
     axios
       .get(
-        `https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100`
+        `https://api.rawg.io/api/games?key=69aa62893d1f44c1ada24aefbb526abe&language=eng&page_size=100`
       )
       .then((response) => res.json(response.data))
       .catch((err) => console.log(err));
   },
 
   getGameDescription: async function(gameID) {
-    return await axios.get(`https://api.rawg.io/api/games/${gameID}?key=d0c84df9f8e946c1a8354306de37078b`)
+    return await axios.get(`https://api.rawg.io/api/games/${gameID}?key=69aa62893d1f44c1ada24aefbb526abe`)
     .then((response) => res.json(response.data))
     .catch(err => console.log(err));
   },
@@ -109,7 +106,7 @@ module.exports = {
   getAllGames: function (req, res) {
     axios
       .get(
-        `https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100`
+        `https://api.rawg.io/api/games?key=69aa62893d1f44c1ada24aefbb526abe&language=eng&page_size=100`
       )
       .then((response) => res.json(response.data))
       .catch((err) => console.log(err));
@@ -131,7 +128,7 @@ module.exports = {
 
   getConsoleGames: async function (platformID, res) {
     console.log("PlatformData inside getConsoleGames", platformID);
-    await axios.get(`https://api.rawg.io/api/games?key=d0c84df9f8e946c1a8354306de37078b&language=eng&page_size=100&platforms=${platformID}`)
+    await axios.get(`https://api.rawg.io/api/games?key=69aa62893d1f44c1ada24aefbb526abe&language=eng&page_size=100&platforms=${platformID}`)
     .then((response) => res.json(response.data))
     .catch(err => console.log(err));
   },

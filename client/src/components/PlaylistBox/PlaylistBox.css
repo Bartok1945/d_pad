@@ -73,6 +73,10 @@ ul{
     overflow-y: auto;
   }
 
+  .gamesContainer > ul > li {
+    font-size: 1.2rem;
+  }
+
   .marginLeft {
     margin-left: 1vw;
   }

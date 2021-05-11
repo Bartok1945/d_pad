@@ -8,7 +8,7 @@ const PlaylistPage = () => {
   return (
     <PageWrapper>
       <Bar />
-      <PlaylistBox />
+      <PlaylistBox key={Math.floor(Math.random() * 100) + 1}/>
     </PageWrapper>
   );
 };

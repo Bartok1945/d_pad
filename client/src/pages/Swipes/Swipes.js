@@ -4,6 +4,8 @@ import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import Bar from "../../components/Bar/Bar";
 import API from "../../utils/API";
 import "./Swipes.css";
+import { useAlert } from "react-alert";
+
 
 const Swipes = () => {
   const [games, setGames] = useState([]);
@@ -11,12 +13,17 @@ const Swipes = () => {
   const [platform, setPlatform] = useState({});
   const [currentGame, setCurrentGame] = useState();
   const [description, setDescription] = useState();
+  const [savedGames, setSavedGames] = useState([]);
+  const [userData, setUserData] = useState({});
+
+  const alert = useAlert();
 
   useEffect(() => {
     API.getUser()
-      .then((response) => console.log("GET USER RESPONE", response.data))
+      .then((userData) => setUserData(userData))
+      .then(() => console.log("userData ==>", userData))
       .catch((err) => console.log("err from useEffect in swipes.js", err));
-  });
+  }, []);
 
   useEffect(() => {
     if (!platform) return;
@@ -47,7 +54,6 @@ const Swipes = () => {
             gameResult[Math.floor(Math.random() * gameResult.length)]
           )
         )
-        // .then(() => gameDescription(currentGame.id))
         .catch((err) =>
           console.log("The following error occurred getting games = ", err)
         );
@@ -56,6 +62,13 @@ const Swipes = () => {
 
   useEffect(() => {
     gameDescription(currentGame?.id);
+    API.getUserGames(userData.id)
+      .then((response) =>  {
+        setSavedGames(response.data.games)
+        console.log("SAVED GAMES ==>", savedGames)
+        return response.data.games;
+      })
+      .catch((err) => console.log(err));
   }, [currentGame]);
 
   const addGame = (game) => {
@@ -63,12 +76,17 @@ const Swipes = () => {
       id: game.id,
       title: game.name,
     };
+    if(savedGames.map(savedGame => savedGame.id).includes(game.id)) {
+       alert.error(`"${gameData.title}" is already on your playlist.`)
+    } else {
     console.log("GAME DATA", gameData);
     API.addGame(gameData)
-      .then(() => console.log("gameData", gameData))
+      .then((results) => console.log("RESULTS ==>", results))
+      .then(() => alert.success(`"${gameData.title}" has been added to playlist.`))
       .catch((err) =>
         console.log("The following error occurred adding games = ", err)
       );
+    }
     nextGame();
   };
 
