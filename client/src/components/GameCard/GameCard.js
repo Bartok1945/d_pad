@@ -32,8 +32,7 @@ function GameCard(props) {
                   <div className="content">
                     <ul>
                       <li>
-                        <strong className="tealColor">Title:</strong>{" "}
-                        {props.name}
+                        <strong className="tealColor title">{props.name}</strong>{" "}
                       </li>
                       <li>
                         <strong className="tealColor">Platform(s):</strong>{" "}
