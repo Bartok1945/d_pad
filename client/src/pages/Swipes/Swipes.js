@@ -4,6 +4,8 @@ import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import Bar from "../../components/Bar/Bar";
 import API from "../../utils/API";
 import "./Swipes.css";
+import { useAlert } from "react-alert";
+
 
 const Swipes = () => {
   const [games, setGames] = useState([]);
@@ -47,7 +49,6 @@ const Swipes = () => {
             gameResult[Math.floor(Math.random() * gameResult.length)]
           )
         )
-        // .then(() => gameDescription(currentGame.id))
         .catch((err) =>
           console.log("The following error occurred getting games = ", err)
         );
@@ -65,7 +66,7 @@ const Swipes = () => {
     };
     console.log("GAME DATA", gameData);
     API.addGame(gameData)
-      .then(() => console.log("gameData", gameData))
+      .then((results) => console.log("RESULTS ==>", results))
       .catch((err) =>
         console.log("The following error occurred adding games = ", err)
       );

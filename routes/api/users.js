@@ -54,7 +54,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/auth", (req, res) => {
-  res.send(req.user.id);
+  res.send(req.user?.id);
 });
 
 router.get("/getAllGames", usersController.getAllGames);

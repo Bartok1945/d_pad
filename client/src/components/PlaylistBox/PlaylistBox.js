@@ -3,11 +3,14 @@ import "./PlaylistBox.css";
 import Container from "react-bootstrap/Container";
 import { Row, Col, Grid } from "react-bootstrap";
 import API from "../../utils/API";
+import { useAlert } from "react-alert";
+
 
 const PlaylistBox = () => {
   const [userGames, setUserGames] = useState([]);
   const [userData, setUserData] = useState({});
-  // const [beatenGames, setBeatenGames] = useState([])
+  const alert = useAlert();
+
 
   useEffect(() => {
     API.getUser()
@@ -16,7 +19,7 @@ const PlaylistBox = () => {
       })
       .then(() => console.log("userData from PlaylistBox", userData))
       .then(getUserGames())
-      .catch((err) => console.log("err from useEffect in swipes.js", err));
+      .catch((err) => console.log("err from useEffect in swipes.js useEffect", err));
   }, []);
 
   useEffect(() => {
@@ -35,8 +38,9 @@ const PlaylistBox = () => {
     console.log("GAME DATA IN deleteUSerGame", JSON.stringify(game.id));
     API.deleteUserGame(JSON.stringify(game.id))
       .then((response) => setUserGames(response.data.games))
+      .then(() => alert.show(`"${game.title}" has been removed.`))
       .catch((err) =>
-        console.log("The following error occurred adding games = ", err)
+        console.log("The following error occurred in deleteUserGame = ", err)
       );
   };
 
@@ -72,7 +76,7 @@ const PlaylistBox = () => {
                   : userGames
                       .filter((game) => game.played === false)
                       .map((game) => (
-                        <ul key={game.index}>
+                        <ul key={Math.floor(Math.random() * 1000) + 1}>
                           <li>{game.title}</li>
                           <button
                             className="delete"
@@ -93,7 +97,7 @@ const PlaylistBox = () => {
                   : userGames
                       .filter((game) => game.played === true)
                       .map((game) => (
-                        <ul key={game.index}>
+                        <ul key={Math.floor(Math.random() * 1000) + 1}>
                           <li>{game.title}</li>
                           <button
                             className="delete"
