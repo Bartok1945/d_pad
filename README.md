@@ -33,7 +33,7 @@ Please feel to reach out to any of the project contributors if you have any ques
 <br />
 
 ### Mobile Responsive:
-![Image](https://files.slack.com/files-pri/T01D99LV4Q5-F02225W3QNL/screen_shot_2021-05-09_at_11.02.28_pm.png)
-![Image](https://files.slack.com/files-pri/T01D99LV4Q5-F021CBP8350/screen_shot_2021-05-09_at_11.03.07_pm.png)
-![Image](https://files.slack.com/files-pri/T01D99LV4Q5-F02199DUQS1/screen_shot_2021-05-09_at_11.03.30_pm.png)
+![Image](https://user-images.githubusercontent.com/74163812/117834080-df5f0a00-b244-11eb-80da-648a2d04d578.png)
+![Image](https://user-images.githubusercontent.com/74163812/117834201-f6056100-b244-11eb-95f0-5b3e3b0bf4f5.png)
+![Image](https://user-images.githubusercontent.com/74163812/117834344-12090280-b245-11eb-84b4-ef970a0b676d.png)
 
