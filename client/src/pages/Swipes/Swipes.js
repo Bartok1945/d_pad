@@ -5,7 +5,6 @@ import Bar from "../../components/Bar/Bar";
 import API from "../../utils/API";
 import "./Swipes.css";
 
-
 const Swipes = () => {
   const [games, setGames] = useState([]);
   const [gameIndex, setGameIndex] = useState(0);
@@ -48,16 +47,16 @@ const Swipes = () => {
             gameResult[Math.floor(Math.random() * gameResult.length)]
           )
         )
-        .then(() =>
-          gameDescription(currentGame.id)
-
-
-        )
+        // .then(() => gameDescription(currentGame.id))
         .catch((err) =>
           console.log("The following error occurred getting games = ", err)
         );
     }
   }, [platform]);
+
+  useEffect(() => {
+    gameDescription(currentGame?.id);
+  }, [currentGame]);
 
   const addGame = (game) => {
     let gameData = {
@@ -92,18 +91,17 @@ const Swipes = () => {
   };
 
   const gameDescription = (gameID) => {
-    console.log("Game ID ", gameID)
+    console.log("Game ID ", gameID);
     let rawGameDescription;
     API.getGameDescription(gameID)
       .then((res) => {
-        rawGameDescription = (res.data.description_raw)
-        console.log(rawGameDescription)
-        setDescription(rawGameDescription)
-        return rawGameDescription
+        rawGameDescription = res.data.description_raw;
+        console.log(rawGameDescription);
+        setDescription(rawGameDescription);
+        return rawGameDescription;
       })
-      .catch((err) => console.log("ERROR FROM getGameDescription", err))
-    console.log(rawGameDescription)
-  }
+      .catch((err) => console.log("ERROR FROM getGameDescription", err));
+  };
 
   return (
     <PageWrapper>
@@ -147,7 +145,7 @@ const Swipes = () => {
           name={currentGame.name}
           image={currentGame.background_image}
           platforms={currentGame.platforms?.map(
-            (p) => `${p.platform.name}   | `
+            (p) => `${p.platform.name}  | `
           )}
           rating={currentGame.rating}
           released={currentGame.released}

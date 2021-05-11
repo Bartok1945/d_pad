@@ -87,6 +87,7 @@
     z-index: 3;
     margin-top: -33vh;
     left: 0.5vw;
+    cursor: pointer;
   }
 
   .buttonRed {
@@ -100,6 +101,7 @@
     height: 20%;
     background-color: #a10606;
     position: relative;
+    cursor: pointer;
   }
 
   .fa-thumbs-down {
@@ -208,6 +210,7 @@
     z-index: 3;
     margin-top: -28vh;
     left: 0.5vw;
+    cursor: pointer;
   }
 
   .buttonRed {
@@ -221,6 +224,7 @@
     height: 20%;
     background-color: #a10606;
     position: relative;
+    cursor: pointer;
   }
 
   .fa-thumbs-down {
