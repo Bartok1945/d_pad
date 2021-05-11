@@ -23,10 +23,10 @@ With the myriad of games available in today's market, it's hard to know what to 
 Heroku deployed link: https://rocky-hollows-56755.herokuapp.com <br /><br />
 
 ### Contributing:
-Thom Huenger- GitHub: [Bartok1945](http://github.com/Bartok1945)<br /><br />
-Rachel Kenney- GitHub: [rjkenney11](http://github.com/rjkenney11)<br /><br />
-Jackie Rivera- GitHub: [Jacqueline8996](http://github.com/Jacquelin8996)<br /><br />
-Nick Vandenberge- GitHub: [nvandenberge](http://github.com/nvandenberge)<br /><br />
+Thom Huenger (Back-End)- GitHub: [Bartok1945](http://github.com/Bartok1945)<br /><br />
+Rachel Kenney (Front-End)- GitHub: [rjkenney11](http://github.com/rjkenney11)<br /><br />
+Jackie Rivera (Front-End)- GitHub: [Jacqueline8996](http://github.com/Jacqueline8996)<br /><br />
+Nick Vandenberge (Back-End)- GitHub: [nvandenberge](http://github.com/nvandenberge)<br /><br />
 
 ### Questions:
 Please feel to reach out to any of the project contributors if you have any questions.<br />
