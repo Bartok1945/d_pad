@@ -1,0 +1,67 @@
+/* .navbar {
+  background-color: #d1233b;
+  color: #303030;
+  height: 50px;
+}
+
+.navbar-brand {
+  font-family: "Iceland", cursive;
+  color: #303030;
+}
+
+.nav-link {
+  font-family: "Iceland", cursive;
+  color: #f4b324;
+  margin-right: 20px;
+  font-size: 35px;
+  list-style: none;
+} */
+
+.logout-button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden; 
+}
+
+.logout-button:hover {
+  color: #007bff;
+}
+
+.nav-item > a,
+.navbar > span,
+h1 {
+  color: #66fcf1 !important; /* Overide Bootstrap */
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+}
+
+/* Underline effect for navbar items */
+.nav-item > a {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+}
+
+.nav-item > a:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.nav-item > a:hover:after {
+  width: 100%;
+  left: 0;
+}
