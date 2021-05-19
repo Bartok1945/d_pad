@@ -18,3 +18,4 @@ const ConsolePages = () => {
 };
 
 export default ConsolePages;
+
