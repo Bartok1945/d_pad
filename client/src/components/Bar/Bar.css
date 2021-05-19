@@ -1,0 +1,30 @@
+.navbar {
+  background-color: #d1233b;
+  color: #303030;
+  height: 50px;
+}
+
+.navbar-brand {
+  font-family: "Iceland", cursive;
+  color: #303030;
+}
+
+.nav-link {
+  font-family: "Iceland", cursive;
+  color: #f4b324;
+  margin-right: 20px;
+  font-size: 35px;
+  list-style: none;
+}
+
+.logout-button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden; 
+}
+
+.logout-button:hover {
+  color: #007bff;
+}

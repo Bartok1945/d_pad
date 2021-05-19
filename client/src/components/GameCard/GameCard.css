@@ -1,0 +1,249 @@
+@media screen and (min-device-width: 1000px) {
+  .container {
+    text-align: center;
+  }
+
+  .switch {
+    margin-top: 1%;
+    margin-bottom: 11%;
+    margin-left: -1%;
+    margin-right: auto;
+  }
+
+  .jumbotronGame {
+    background-color: #242329 !important;
+    position: relative;
+    width: 70%;
+    display: inline-block;
+    top: 1vh;
+    height: 75vh;
+    padding: 0%;
+    margin: 0;
+    flex-basis: auto;
+    overflow: auto;
+    text-align: justify;
+  }
+  .card {
+    text-align: center;
+    overflow: auto;
+    background-color: hsl(0, 0%, 20%);
+    width: 100%;
+    font-family: "Iceland", cursive;
+    flex-basis: auto;
+    text-align: center;
+    overflow: auto;
+    border-color: #242329;
+  }
+  .card > .img-container {
+    height: 60%;
+    overflow: hidden;
+    text-align: center;
+    background-color: #242329;
+    margin: 0%;
+  }
+  .tealColor {
+    color: #6dc4ca;
+  }
+  .card > .img-container > img {
+    background-color: #242329;
+    width: 100%;
+  }
+  .content {
+    padding-top: 2%;
+    background-color: #242329;
+    color: aliceblue;
+    text-align: center;
+    font-size: 30px;
+    overflow: auto;
+  }
+
+  .controller {
+    display: flex;
+    height: 77%;
+    width: 80vw;
+    top: 65%;
+    border-radius: 45rem;
+    flex-basis: auto;
+  }
+
+  .left-cont {
+    height: 80vh;
+    z-index: 0;
+  }
+
+  .right-cont {
+    margin-top: 1vh;
+    height: 75.5vh;
+  }
+
+  .buttonGreen {
+    border: 0.5rem solid black;
+    border-radius: 50%;
+    width: 65%;
+    margin-bottom: 0%;
+    height: 20%;
+    background-color: #06b120;
+    position: relative;
+    z-index: 3;
+    margin-top: -33vh;
+    left: 0.5vw;
+    cursor: pointer;
+  }
+
+  .buttonRed {
+    z-index: 3;
+    margin-top: -66vh;
+    left: 3vw;
+    border: 0.5rem solid black;
+    border-radius: 50%;
+    width: 65%;
+    margin-bottom: 0%;
+    height: 20%;
+    background-color: #a10606;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .fa-thumbs-down {
+    font-size: 4.5vw;
+    color: black;
+    margin-left: 9%;
+    padding-top: 20%;
+    text-align: center;
+  }
+
+  .fa-thumbs-up {
+    font-size: 4.5vw;
+    color: black;
+    margin-left: 5%;
+    padding-top: 12%;
+    text-align: center;
+  }
+
+  .title{
+    font-size: 2.7rem;
+  }
+
+}
+
+@media screen and (min-device-width: 1700px) {
+  .switch {
+    margin-top: 1%;
+    margin-bottom: 11%;
+    margin-left: -18%;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 900px) and (orientation: landscape){
+
+  .switch {
+    margin-top: 1%;
+    margin-bottom: 11%;
+    margin-left: -4%;
+    margin-right: auto;
+  }
+  
+  .card {
+    text-align: center;
+    background-color: hsl(0, 0%, 20%);
+    width: 100%;
+    height: 61vh;
+    font-family: "Iceland", cursive;
+    flex-basis: auto;
+    text-align: center;
+    overflow: auto;
+    border-color: #242329;
+  }
+  .card > .img-container {
+    height: 40vh;
+    overflow: hidden;
+    text-align: center;
+    background-color: #242329;
+    margin: 0%;
+  }
+  .tealColor {
+    color: #6dc4ca;
+  }
+  .card > .img-container > img {
+    background-color: #242329;
+    width: 100%;
+    height: 40vh;
+  }
+  .content {
+    height: 21vh;
+    padding-top: 2%;
+    background-color: #242329;
+    color: aliceblue;
+    text-align: center;
+    font-size: 1.2rem;
+    overflow: auto;
+  }
+
+  .controller {
+    display: flex;
+    height: 77%;
+    width: 80vw;
+    top: 65%;
+    border-radius: 45rem;
+    flex-basis: auto;
+  }
+
+  .left-cont {
+    height: 65vh;
+    z-index: 0;
+  }
+
+  .right-cont {
+    margin-top: 1vh;
+    height: 60.5vh;
+  }
+
+  .buttonGreen {
+    border: 0.5rem solid black;
+    border-radius: 50%;
+    width: 65%;
+    margin-bottom: 0%;
+    height: 20%;
+    background-color: #06b120;
+    position: relative;
+    z-index: 3;
+    margin-top: -28vh;
+    left: 0.5vw;
+    cursor: pointer;
+  }
+
+  .buttonRed {
+    z-index: 3;
+    margin-top: -55vh;
+    left: 3vw;
+    border: 0.5rem solid black;
+    border-radius: 50%;
+    width: 65%;
+    margin-bottom: 0%;
+    height: 20%;
+    background-color: #a10606;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .fa-thumbs-down {
+    font-size: 4.5vw;
+    color: black;
+    margin-left: 9%;
+    padding-top: 20%;
+    text-align: center;
+  }
+
+  .fa-thumbs-up {
+    font-size: 4.5vw;
+    color: black;
+    margin-left: 8%;
+    padding-top: 7%;
+    text-align: center;
+  }
+
+  .container-text{
+    padding: 1% 0% 0% 0%;
+  }
+}

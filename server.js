@@ -37,8 +37,7 @@ app.use(passport.session());
 app.use(routes);
 
 // Connect to the Mongo DB
-// UPDATE THE DATABASE NAME!!
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/<DB_NAME>", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dpad_db", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
