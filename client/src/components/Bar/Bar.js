@@ -16,7 +16,7 @@ const Bar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-right">
+    <nav className="navbar navbar-expand-sm navbar-right">
       <button
         className="navbar-toggler"
         type="button"
